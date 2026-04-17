@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oopart — Soluciones del futuro para problemas del presente</title>
+  <meta name="description" content="Consultoría tecnológica especializada en IA, automatización e integración de sistemas para empresas en Chile." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body:    ['IBM Plex Sans', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --c-bg:        #050A14;
+      --c-surface:   #0C1525;
+      --c-surface2:  #0F1C33;
+      --c-border:    #1A2540;
+      --c-text:      #E2E8F0;
+      --c-muted:     #64748B;
+      --c-muted2:    #94A3B8;
+      --c-accent:    #00D4FF;
+      --c-accent-bg: rgba(0,212,255,0.06);
+      --c-accent-bd: rgba(0,212,255,0.2);
+      --c-nav:       rgba(5,10,20,0.85);
+      --c-scrollbar: #1A2540;
+      --c-grid:      rgba(0,212,255,0.04);
+      --c-glow:      rgba(0,212,255,0.06);
+    }
+
+    [data-theme="light"] {
+      --c-bg:        #F0F4F8;
+      --c-surface:   #FFFFFF;
+      --c-surface2:  #F8FAFC;
+      --c-border:    #CBD5E1;
+      --c-text:      #0F172A;
+      --c-muted:     #64748B;
+      --c-muted2:    #475569;
+      --c-accent:    #0066CC;
+      --c-accent-bg: rgba(0,102,204,0.06);
+      --c-accent-bd: rgba(0,102,204,0.25);
+      --c-nav:       rgba(240,244,248,0.9);
+      --c-scrollbar: #CBD5E1;
+      --c-grid:      rgba(0,102,204,0.05);
+      --c-glow:      rgba(0,102,204,0.04);
+    }
+
+    /* ── BASE ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--c-bg); color: var(--c-text); font-family: 'IBM Plex Sans', sans-serif; transition: background 0.35s ease, color 0.35s ease; }
+
+    /* ── HERO GRID ── */
+    .hero-grid {
+      background-color: var(--c-bg);
+      background-image: linear-gradient(var(--c-grid) 1px, transparent 1px), linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transition: background 0.35s ease;
+    }
+
+    /* ── GLOW ── */
+    .glow-cyan-sm { box-shadow: 0 0 15px var(--c-accent-bg); }
+    .text-glow { text-shadow: 0 0 40px var(--c-accent-bg); }
+
+    /* ── GRADIENT TEXT ── */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--c-accent) 0%, #7C3AED 50%, var(--c-accent) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── NAV ── */
+    .nav-wrap {
+      background: var(--c-nav);
+      border-bottom: 1px solid var(--c-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      color: var(--c-muted2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .theme-toggle:hover { border-color: var(--c-accent); color: var(--c-accent); }
+
+    /* ── UTILITY CLASSES ── */
+    .t-text   { color: var(--c-text); }
+    .t-muted  { color: var(--c-muted); }
+    .t-accent { color: var(--c-accent); }
+    .bg-surf  { background: var(--c-surface); }
+    .bg-surf2 { background: var(--c-surface2); }
+    .b-border { border-color: var(--c-border); }
+
+    /* ── BUTTONS ── */
+    .btn-accent  { background: var(--c-accent); color: var(--c-bg); transition: opacity 0.2s; }
+    .btn-accent:hover { opacity: 0.88; }
+    .btn-outline { border: 1px solid var(--c-border); color: var(--c-text); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: var(--c-accent); background: var(--c-surface); }
+
+    /* ── NAV LINKS ── */
+    .nav-link { color: var(--c-muted); transition: color 0.2s; }
+    .nav-link:hover { color: var(--c-text); }
+
+    /* ── CARDS ── */
+    .service-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      transition: border-color 0.3s ease, transform 0.3s ease, background 0.35s ease;
+    }
+    .service-card:hover { border-color: var(--c-accent); transform: translateY(-4px); }
+    .service-card:hover .card-icon { color: var(--c-accent); }
+    .card-icon { color: var(--c-muted); transition: color 0.3s; }
+
+    .case-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      transition: border-color 0.3s ease, background 0.35s ease;
+    }
+    .case-card:hover { border-color: var(--c-accent); }
+
+    [data-theme="light"] .service-card,
+    [data-theme="light"] .case-card { box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    [data-theme="light"] .service-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+    /* ── TECH PILLS ── */
+    .tech-pill { border: 1px solid var(--c-accent-bd); color: var(--c-muted); transition: border-color 0.3s, background 0.3s, color 0.3s; }
+    .tech-pill:hover { border-color: var(--c-accent); background: var(--c-accent-bg); color: var(--c-accent); }
+
+    /* ── INPUTS ── */
+    input, textarea, select {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      color: var(--c-text);
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.35s ease;
+    }
+    input::placeholder, textarea::placeholder { color: var(--c-muted); opacity: 0.7; }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--c-accent);
+      box-shadow: 0 0 0 3px var(--c-accent-bg);
+    }
+    select option { background: var(--c-surface); color: var(--c-text); }
+
+    /* ── SUB-SERVICES ── */
+    .sub-services { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .service-card:hover .sub-services { max-height: 80px; }
+
+    /* ── HERO BADGE ── */
+    .hero-badge { border: 1px solid var(--c-accent-bd); background: var(--c-accent-bg); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--c-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--c-scrollbar); border-radius: 3px; }
+
+    /* ── MOBILE MENU ── */
+    #mobile-menu { background: var(--c-surface); border-top: 1px solid var(--c-border); transition: max-height 0.3s ease, opacity 0.3s ease, background 0.35s ease; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <a href="#" class="font-display font-extrabold text-xl tracking-widest t-text">
+      OO<span class="t-accent">PART</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#servicios" class="nav-link text-sm font-body">Servicios</a>
+      <a href="#resultados" class="nav-link text-sm font-body">Resultados</a>
+      <a href="#contacto"  class="nav-link text-sm font-body">Contacto</a>
+    </div>
+
+    <div class="hidden md:flex items-center gap-3">
+      <button id="theme-btn" class="theme-toggle" aria-label="Cambiar tema">
+        <svg id="icon-moon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="icon-sun"  width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <a href="#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded glow-cyan-sm">
+        Conversemos →
+      </a>
+    </div>
+
+    <div class="md:hidden flex items-center gap-2">
+      <button id="theme-btn-mobile" class="theme-toggle" aria-label="Cambiar tema">
+        <svg id="icon-moon-m" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="icon-sun-m"  width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button id="menu-btn" class="nav-link" aria-label="Abrir menú">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden max-h-0 opacity-0 overflow-hidden">
+    <div class="flex flex-col px-6 py-4 gap-4">
+      <a href="#servicios" class="nav-link text-sm" onclick="closeMobileMenu()">Servicios</a>
+      <a href="#resultados" class="nav-link text-sm" onclick="closeMobileMenu()">Resultados</a>
+      <a href="#contacto"  class="nav-link text-sm" onclick="closeMobileMenu()">Contacto</a>
+      <a href="#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded w-fit" onclick="closeMobileMenu()">Conversemos →</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero-grid relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div class="w-[600px] h-[600px] rounded-full" style="background: radial-gradient(circle, var(--c-glow) 0%, transparent 70%);"></div>
+  </div>
+  <div class="absolute top-24 right-12 w-32 h-32 rounded-full pointer-events-none" style="border: 1px solid var(--c-accent-bd);"></div>
+  <div class="absolute top-32 right-20 w-16 h-16 rounded-full pointer-events-none" style="border: 1px solid var(--c-accent-bd);"></div>
+
+  <div class="max-w-6xl mx-auto px-6 py-24 w-full">
+    <div class="max-w-3xl">
+      <div class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 reveal">
+        <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: var(--c-accent);"></span>
+        <span class="text-xs font-body tracking-wider t-accent">Consultoría tecnológica · Chile</span>
+      </div>
+
+      <h1 class="font-display font-semibold text-4xl md:text-6xl leading-tight mb-6 t-text reveal" style="transition-delay:0.1s">
+        Transformamos<br />
+        <span class="gradient-text text-glow">operaciones complejas</span><br />
+        en ventajas competitivas
+      </h1>
+
+      <p class="text-lg font-body font-light leading-relaxed mb-10 max-w-xl reveal t-muted" style="transition-delay:0.2s">
+        Para empresas en Chile que necesitan IA, automatización e integración de sistemas —
+        sin fricciones ni proyectos interminables.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay:0.3s">
+        <a href="#servicios" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded glow-cyan-sm">
+          Ver nuestros servicios
+        </a>
+        <a href="#contacto" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded">
+          Conversemos →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TRUST SIGNALS -->
+<section class="bg-surf2" style="border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); transition: background 0.35s ease, border-color 0.35s ease;">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10 reveal">
+      <div class="text-center">
+        <p class="font-display font-bold text-3xl mb-1 t-accent">15+</p>
+        <p class="text-xs t-muted font-body tracking-wide uppercase">Años de experiencia</p>
+      </div>
+      <div class="text-center">
+        <p class="font-display font-bold text-3xl mb-1 t-accent">40+</p>
+        <p class="text-xs t-muted font-body tracking-wide uppercase">Proyectos entregados</p>
+      </div>
+      <div class="text-center">
+        <p class="font-display font-bold text-3xl mb-1 t-accent">6</p>
+        <p class="text-xs t-muted font-body tracking-wide uppercase">Industrias atendidas</p>
+      </div>
+      <div class="text-center">
+        <p class="font-display font-bold text-3xl mb-1 t-accent">99.9%</p>
+        <p class="text-xs t-muted font-body tracking-wide uppercase">Uptime garantizado</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 reveal" style="transition-delay:0.1s">
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">Azure</span>
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">Google Cloud</span>
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">n8n</span>
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">SharePoint</span>
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">Python</span>
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">Node.js</span>
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">Power Automate</span>
+      <span class="tech-pill px-3 py-1.5 rounded-full text-xs font-body">React</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-24" style="background: var(--c-bg); transition: background 0.35s ease;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 reveal">
+      <span class="text-xs font-body tracking-widest uppercase t-accent">Servicios</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl t-text mt-2 mb-4">Tres áreas de especialización.<br />Un solo equipo que las integra.</h2>
+      <p class="t-muted font-body max-w-xl">Combinamos experiencia sectorial con tecnología de vanguardia para entregar soluciones que generan impacto medible.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="service-card rounded-xl p-8 cursor-default reveal">
+        <div class="card-icon mb-6">
+          <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/>
+            <circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/>
+            <path d="M9 15s1 1 3 1 3-1 3-1"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl t-text mb-3">Inteligencia Artificial</h3>
+        <p class="t-muted text-sm font-body leading-relaxed mb-4">Diseñamos e implementamos soluciones IA que aprenden de tu negocio y automatizan lo que hoy consume tiempo y recursos.</p>
+        <div class="sub-services">
+          <div class="pt-3 flex flex-col gap-2" style="border-top: 1px solid var(--c-border);">
+            <span class="text-xs font-body t-accent" style="opacity:0.85">→ Diseño de Soluciones IA</span>
+            <span class="text-xs font-body t-accent" style="opacity:0.85">→ Automatización de Procesos con IA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card rounded-xl p-8 cursor-default reveal" style="transition-delay:0.1s">
+        <div class="card-icon mb-6">
+          <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <rect x="2" y="3" width="8" height="8" rx="1.5"/><rect x="14" y="3" width="8" height="8" rx="1.5"/>
+            <rect x="2" y="13" width="8" height="8" rx="1.5"/><rect x="14" y="13" width="8" height="8" rx="1.5"/>
+            <path d="M10 7h4M7 10v4M17 10v4M10 17h4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl t-text mb-3">Tecnología & Sistemas</h3>
+        <p class="t-muted text-sm font-body leading-relaxed mb-4">Conectamos y administramos tu ecosistema tecnológico para que opere sin fricciones, con seguridad y a escala.</p>
+        <div class="sub-services">
+          <div class="pt-3 flex flex-col gap-2" style="border-top: 1px solid var(--c-border);">
+            <span class="text-xs font-body t-accent" style="opacity:0.85">→ Integración de Sistemas</span>
+            <span class="text-xs font-body t-accent" style="opacity:0.85">→ Gestión de Infraestructura</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card rounded-xl p-8 cursor-default reveal" style="transition-delay:0.2s">
+        <div class="card-icon mb-6">
+          <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <path d="M9 7h6M9 11h6M9 15h4" stroke-linecap="round"/>
+            <circle cx="17" cy="19" r="4" style="fill: var(--c-bg);" stroke="currentColor"/>
+            <path d="M15.5 19l1 1 2-2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl t-text mb-3">Productos & Estrategia</h3>
+        <p class="t-muted text-sm font-body leading-relaxed mb-4">Construimos productos digitales y evaluamos tu madurez tecnológica para darte una hoja de ruta accionable.</p>
+        <div class="sub-services">
+          <div class="pt-3 flex flex-col gap-2" style="border-top: 1px solid var(--c-border);">
+            <span class="text-xs font-body t-accent" style="opacity:0.85">→ Desarrollo Web / Mobile</span>
+            <span class="text-xs font-body t-accent" style="opacity:0.85">→ Assessment Tecnológico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CASOS DE ÉXITO -->
+<section id="resultados" class="py-24 bg-surf2" style="border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); transition: background 0.35s ease, border-color 0.35s ease;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 reveal">
+      <span class="text-xs font-body tracking-widest uppercase t-accent">Casos de éxito</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl t-text mt-2 mb-4">Problemas reales.<br />Soluciones concretas.</h2>
+      <p class="t-muted font-body">Resultados medibles en organizaciones que eligieron transformarse.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Caso 1: Humphreys -->
+      <div class="case-card rounded-xl p-7 reveal">
+        <span class="inline-block text-xs font-body px-2 py-1 rounded-full mb-2 t-accent" style="border: 1px solid var(--c-accent-bd); background: var(--c-accent-bg);">Clasificadora de Riesgo</span>
+        <p class="text-xs t-muted font-body mb-4">Humphreys</p>
+        <h3 class="font-display font-semibold text-lg t-text mb-5">Automatización de reportes financieros</h3>
+        <div class="flex flex-col gap-4 mb-6">
+          <div class="flex gap-3">
+            <span class="text-sm mt-0.5 flex-shrink-0" style="color:#F87171;">✕</span>
+            <p class="text-xs t-muted font-body leading-relaxed">Análisis financiero 100% manual, proceso de 30 días con altos errores de procesamiento.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="text-sm mt-0.5 flex-shrink-0 t-accent">✓</span>
+            <p class="text-xs t-muted font-body leading-relaxed">Automatización de extracción, limpieza y consolidación de datos con generación automática de informes de clasificación de riesgo.</p>
+          </div>
+        </div>
+        <div class="pt-4" style="border-top: 1px solid var(--c-border);">
+          <p class="text-xs t-muted font-body mb-3 uppercase tracking-wider">Resultados</p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">83%</p>
+              <p class="text-xs t-muted font-body leading-tight">Reducción de tiempo</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">90%</p>
+              <p class="text-xs t-muted font-body leading-tight">Menos errores</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">30→5</p>
+              <p class="text-xs t-muted font-body leading-tight">Días de proceso</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">14%</p>
+              <p class="text-xs t-muted font-body leading-tight">Aumento ventas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Caso 2: Accuhealth -->
+      <div class="case-card rounded-xl p-7 reveal" style="transition-delay:0.1s">
+        <span class="inline-block text-xs font-body px-2 py-1 rounded-full mb-2 t-accent" style="border: 1px solid var(--c-accent-bd); background: var(--c-accent-bg);">Telemedicina</span>
+        <p class="text-xs t-muted font-body mb-4">Accuhealth</p>
+        <h3 class="font-display font-semibold text-lg t-text mb-5">App de monitoreo y control médico</h3>
+        <div class="flex flex-col gap-4 mb-6">
+          <div class="flex gap-3">
+            <span class="text-sm mt-0.5 flex-shrink-0" style="color:#F87171;">✕</span>
+            <p class="text-xs t-muted font-body leading-relaxed">Costos elevados de renovación tecnológica y pérdida de dispositivos de telemonitoreo de pacientes.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="text-sm mt-0.5 flex-shrink-0 t-accent">✓</span>
+            <p class="text-xs t-muted font-body leading-relaxed">App conectada a dispositivos Bluetooth con integración de monitoreo, alertas automáticas y seguimiento médico de pacientes.</p>
+          </div>
+        </div>
+        <div class="pt-4" style="border-top: 1px solid var(--c-border);">
+          <p class="text-xs t-muted font-body mb-3 uppercase tracking-wider">Resultados</p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">43%</p>
+              <p class="text-xs t-muted font-body leading-tight">Tasa de adopción</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">34%</p>
+              <p class="text-xs t-muted font-body leading-tight">Ahorro renovación</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">23%</p>
+              <p class="text-xs t-muted font-body leading-tight">Eficiencia controles</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">16%</p>
+              <p class="text-xs t-muted font-body leading-tight">Ahorro operativo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Caso 3: Isapre Fundación -->
+      <div class="case-card rounded-xl p-7 reveal" style="transition-delay:0.2s">
+        <span class="inline-block text-xs font-body px-2 py-1 rounded-full mb-2 t-accent" style="border: 1px solid var(--c-accent-bd); background: var(--c-accent-bg);">Salud Previsional</span>
+        <p class="text-xs t-muted font-body mb-4">Isapre Fundación</p>
+        <h3 class="font-display font-semibold text-lg t-text mb-5">Plataforma de suscripción electrónica</h3>
+        <div class="flex flex-col gap-4 mb-6">
+          <div class="flex gap-3">
+            <span class="text-sm mt-0.5 flex-shrink-0" style="color:#F87171;">✕</span>
+            <p class="text-xs t-muted font-body leading-relaxed">Suscripción manual de planes de salud con fraudes, errores documentales y 3 días de cierre por venta.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="text-sm mt-0.5 flex-shrink-0 t-accent">✓</span>
+            <p class="text-xs t-muted font-body leading-relaxed">Plataforma web con firma electrónica, integración front/back office y validación médica en línea sobre Azure.</p>
+          </div>
+        </div>
+        <div class="pt-4" style="border-top: 1px solid var(--c-border);">
+          <p class="text-xs t-muted font-body mb-3 uppercase tracking-wider">Resultados</p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">63%</p>
+              <p class="text-xs t-muted font-body leading-tight">Menos fraudes</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">85%</p>
+              <p class="text-xs t-muted font-body leading-tight">Menos errores docs</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">30m</p>
+              <p class="text-xs t-muted font-body leading-tight">Cierre venta (vs 3d)</p>
+            </div>
+            <div class="rounded-lg p-2 text-center" style="background: var(--c-accent-bg);">
+              <p class="font-display font-bold text-lg t-accent">100%</p>
+              <p class="text-xs t-muted font-body leading-tight">Custodia digital</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-24" style="background: var(--c-bg); transition: background 0.35s ease;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+
+      <div class="reveal">
+        <span class="text-xs font-body tracking-widest uppercase t-accent">Contacto</span>
+        <h2 class="font-display font-bold text-3xl md:text-4xl t-text mt-2 mb-4">¿Tienes un desafío tecnológico?</h2>
+        <p class="t-muted font-body leading-relaxed mb-8">Cuéntanos qué necesitas. Respondemos en menos de 24 horas.</p>
+
+        <div class="flex flex-col gap-5">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--c-surface); border: 1px solid var(--c-border);">
+              <svg width="16" height="16" fill="none" stroke-width="1.5" viewBox="0 0 24 24" style="stroke: var(--c-accent);">
+                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs t-muted font-body uppercase tracking-wider mb-0.5">Email</p>
+              <a href="mailto:aespinoza@oopart.cl" class="text-sm t-text font-body hover:t-accent transition-colors">aespinoza@oopart.cl</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--c-surface); border: 1px solid var(--c-border);">
+              <svg width="16" height="16" fill="none" stroke-width="1.5" viewBox="0 0 24 24" style="stroke: var(--c-accent);">
+                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs t-muted font-body uppercase tracking-wider mb-0.5">Respuesta</p>
+              <p class="text-sm t-text font-body">Menos de 24 horas hábiles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.15s">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form" class="flex flex-col gap-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs t-muted font-body uppercase tracking-wider">Nombre</label>
+              <input type="text" name="nombre" required placeholder="Tu nombre" class="rounded-lg px-4 py-3 text-sm font-body" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs t-muted font-body uppercase tracking-wider">Email</label>
+              <input type="email" name="email" required placeholder="tu@empresa.cl" class="rounded-lg px-4 py-3 text-sm font-body" />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs t-muted font-body uppercase tracking-wider">Empresa</label>
+            <input type="text" name="empresa" placeholder="Nombre de tu empresa" class="rounded-lg px-4 py-3 text-sm font-body" />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs t-muted font-body uppercase tracking-wider">¿Cuál es tu principal desafío?</label>
+            <select name="desafio" class="rounded-lg px-4 py-3 text-sm font-body appearance-none cursor-pointer">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="ia">Quiero implementar IA en mi empresa</option>
+              <option value="integracion">Necesito integrar mis sistemas</option>
+              <option value="automatizacion">Quiero automatizar procesos</option>
+              <option value="assessment">Necesito un assessment tecnológico</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs t-muted font-body uppercase tracking-wider">Mensaje</label>
+            <textarea name="mensaje" rows="4" placeholder="Cuéntanos más sobre tu proyecto o desafío..." class="rounded-lg px-4 py-3 text-sm font-body resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="btn-accent mt-2 w-full py-3.5 font-body font-medium text-sm rounded-lg glow-cyan-sm">
+            Enviar mensaje →
+          </button>
+
+          <p id="form-success" class="hidden text-sm text-center font-body pt-2 t-accent">
+            ✓ Mensaje enviado. Te contactaremos pronto.
+          </p>
+          <p id="form-error" class="hidden text-sm text-center font-body pt-2" style="color:#F87171;">
+            Ocurrió un error. Por favor escríbenos directo a aespinoza@oopart.cl
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="py-12 bg-surf2" style="border-top: 1px solid var(--c-border); transition: background 0.35s ease, border-color 0.35s ease;">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-10 py-10 rounded-xl" style="border: 1px solid var(--c-border); background: radial-gradient(ellipse at center, var(--c-glow) 0%, var(--c-surface) 70%); transition: background 0.35s ease, border-color 0.35s ease;">
+      <p class="t-muted text-sm font-body mb-2">¿Listo para empezar?</p>
+      <h3 class="font-display font-bold text-2xl t-text mb-5">Hablemos de tu próximo proyecto</h3>
+      <a href="#contacto" class="btn-accent inline-flex items-center gap-2 px-6 py-3 font-body font-medium text-sm rounded glow-cyan-sm">
+        Conversemos →
+      </a>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-6" style="border-top: 1px solid var(--c-border);">
+      <div>
+        <p class="font-display font-bold text-base tracking-widest t-text">OO<span class="t-accent">PART</span></p>
+        <p class="text-xs t-muted font-body mt-1">Out of Place Artefact — Tecnología que transforma.</p>
+      </div>
+      <div class="flex gap-6">
+        <a href="#servicios" class="nav-link text-xs font-body">Servicios</a>
+        <a href="#resultados" class="nav-link text-xs font-body">Resultados</a>
+        <a href="#contacto"  class="nav-link text-xs font-body">Contacto</a>
+      </div>
+      <p class="text-xs t-muted font-body">© 2025 Oopart. Todos los derechos reservados.</p>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- SCRIPTS -->
+<script>
+  // ── THEME ──
+  const html = document.documentElement;
+  const saved = localStorage.getItem('oopart-theme') || 'dark';
+  html.setAttribute('data-theme', saved);
+
+  function setIcons(theme) {
+    const dark = theme === 'dark';
+    document.getElementById('icon-moon').style.display   = dark  ? 'block' : 'none';
+    document.getElementById('icon-sun').style.display    = !dark ? 'block' : 'none';
+    document.getElementById('icon-moon-m').style.display = dark  ? 'block' : 'none';
+    document.getElementById('icon-sun-m').style.display  = !dark ? 'block' : 'none';
+  }
+  setIcons(saved);
+
+  function toggleTheme() {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('oopart-theme', next);
+    setIcons(next);
+  }
+
+  document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+  document.getElementById('theme-btn-mobile').addEventListener('click', toggleTheme);
+
+  // ── REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  reveals.forEach(el => observer.observe(el));
+
+  // ── MOBILE MENU ──
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.maxHeight = menuOpen ? '300px' : '0';
+    mobileMenu.style.opacity   = menuOpen ? '1'    : '0';
+  });
+  function closeMobileMenu() {
+    menuOpen = false;
+    mobileMenu.style.maxHeight = '0';
+    mobileMenu.style.opacity   = '0';
+  }
+
+  // ── FORMSPREE ──
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST', body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        document.getElementById('form-success').classList.remove('hidden');
+      } else {
+        document.getElementById('form-error').classList.remove('hidden');
+      }
+    } catch {
+      document.getElementById('form-error').classList.remove('hidden');
+    }
+    btn.textContent = 'Enviar mensaje →';
+    btn.disabled = false;
+  });
+</script>
+
+</body>
+</html>
