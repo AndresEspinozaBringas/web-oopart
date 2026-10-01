@@ -32,7 +32,13 @@ npm run build
 
 Durante el desarrollo, `npm run watch` recompila al guardar.
 
-Commitea siempre el `styles.css` resultante: Cloudflare no ejecuta build.
+Commitea siempre el `styles.css` resultante **y el `index.html`**: Cloudflare
+no ejecuta build.
+
+`npm run build` tambien escribe el hash del CSS en su `<link>`
+(`styles.css?v=51d14d7a`). Sin eso, quien ya visito el sitio sigue viendo
+el CSS viejo desde su cache y no recibe los cambios. Por eso el build toca
+los dos archivos.
 
 ## Logos
 
