@@ -1,9 +1,11 @@
-# no se publican: fuentes de build y originales de marca
+# no se publican: configuracion, fuentes de build y originales de marca
 src/
 brand/
 node_modules/
 .claude/
+.gitignore
 package.json
 package-lock.json
 tailwind.config.js
+wrangler.jsonc
 README.md
