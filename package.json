@@ -1,0 +1,12 @@
+{
+  "name": "web-oopart",
+  "private": true,
+  "description": "Sitio oopart.cl — una sola pagina estatica, desplegada en Cloudflare Workers.",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o styles.css --minify",
+    "watch": "tailwindcss -i src/input.css -o styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
