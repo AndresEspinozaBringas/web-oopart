@@ -66,24 +66,19 @@
   if (y) y.textContent = new Date().getFullYear();
 
   // ── FORMULARIO ──
-  // Formspree responde en ingles; traducimos los rechazos que puede ver una persona
+  // Motivos que devuelve nuestro endpoint /api/contacto
   var MOTIVOS = {
-    BLOCKED_FREEMAIL: 'Necesitamos un correo corporativo. Si no tienes uno, escríbenos directo a aespinoza@oopart.cl',
-    TYPE_EMAIL: 'Revisa el correo: parece que tiene un error de escritura.',
-    REQUIRED_FIELD_MISSING: 'Faltan campos obligatorios.',
-    REQUIRED_FIELD_EMPTY: 'Faltan campos obligatorios.',
-    EMPTY: 'El formulario llegó vacío.',
-    PROJECT_NOT_FOUND: 'El formulario no está disponible. Escríbenos a aespinoza@oopart.cl',
-    FORM_NOT_FOUND: 'El formulario no está disponible. Escríbenos a aespinoza@oopart.cl',
-    NO_FILE_UPLOADS: 'No aceptamos archivos adjuntos.',
-    INACTIVE: 'El formulario está desactivado. Escríbenos a aespinoza@oopart.cl'
+    CAMPOS_REQUERIDOS: 'Faltan campos obligatorios: revisa nombre, email y mensaje.',
+    EMAIL_INVALIDO: 'Revisa el correo: parece que tiene un error de escritura.',
+    CUERPO_DEMASIADO_GRANDE: 'El mensaje es demasiado largo. Acórtalo e inténtalo de nuevo.',
+    CUERPO_INVALIDO: 'No pudimos leer el formulario. Recarga la página e inténtalo de nuevo.',
+    SERVICIO_NO_CONFIGURADO: 'El envío está temporalmente fuera de servicio. Escríbenos a aespinoza@oopart.cl',
+    ENVIO_FALLIDO: 'No pudimos enviar el mensaje. Escríbenos directo a aespinoza@oopart.cl',
+    ORIGEN_NO_PERMITIDO: 'Petición no permitida.'
   };
 
-  function traducir(errores) {
-    for (var i = 0; i < errores.length; i++) {
-      if (MOTIVOS[errores[i].code]) return MOTIVOS[errores[i].code];
-    }
-    return '';
+  function traducir(data) {
+    return MOTIVOS[data && data.error] || '';
   }
 
   var form = document.getElementById('contact-form');
@@ -126,7 +121,7 @@
             showStatus('ok', '✓ Mensaje enviado. Te contactaremos dentro de 24 horas hábiles.');
           } else {
             // mostrar el motivo real en vez de un error generico
-            var motivo = traducir(data.errors || []);
+            var motivo = traducir(data);
             showStatus('err', motivo || 'No pudimos enviar el mensaje. Escríbenos directo a aespinoza@oopart.cl');
           }
           restaurar();

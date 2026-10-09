@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "web-oopart",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-04-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "MAIL_TO": "aespinoza@oopart.cl",
+    "MAIL_FROM": "Oopart <contacto@oopart.cl>"
+  }
+}
