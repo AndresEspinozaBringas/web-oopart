@@ -1,5 +1,6 @@
 # no se publican: configuracion, fuentes de build y originales de marca
 src/
+scripts/
 brand/
 node_modules/
 .claude/
