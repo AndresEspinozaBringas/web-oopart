@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './gemelos-digitales/*.html'],
+  content: ['./index.html', './gemelos-digitales/*.html', './casos/*/*.html'],
   theme: {
     extend: {
       fontFamily: {

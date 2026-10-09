@@ -15,6 +15,9 @@ sirve el repositorio como archivos estáticos. Un push a `master` publica.
 |---|---|
 | `index.html` | Portada |
 | `gemelos-digitales/index.html` | Página del servicio de gemelos digitales |
+| `casos/<slug>/index.html` | **Generadas.** No editar a mano |
+| `scripts/casos.json` | Contenido de los casos: edita aquí |
+| `scripts/build-casos.mjs` | Genera las páginas de caso desde el JSON |
 | `app.js` | JS compartido por todas las páginas |
 | `analytics.js` | Carga GA4 **solo** si hay un ID configurado |
 | `styles.css` | **Generado.** No editar a mano |
@@ -35,6 +38,12 @@ medición en el `<head>` de cada página:
 
 Mientras esté vacío no se carga nada, no se deja ninguna cookie y no se
 envía ningún dato.
+
+## Agregar o editar un caso de éxito
+
+Las páginas de `casos/` se generan: edita `scripts/casos.json` y corre
+`npm run build`. Para un caso nuevo, agrega una entrada al JSON y súmalo a
+`sitemap.xml`; la navegación entre casos se arma sola.
 
 ## Agregar una página
 
