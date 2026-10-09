@@ -66,6 +66,26 @@
   if (y) y.textContent = new Date().getFullYear();
 
   // ── FORMULARIO ──
+  // Formspree responde en ingles; traducimos los rechazos que puede ver una persona
+  var MOTIVOS = {
+    BLOCKED_FREEMAIL: 'Necesitamos un correo corporativo. Si no tienes uno, escríbenos directo a aespinoza@oopart.cl',
+    TYPE_EMAIL: 'Revisa el correo: parece que tiene un error de escritura.',
+    REQUIRED_FIELD_MISSING: 'Faltan campos obligatorios.',
+    REQUIRED_FIELD_EMPTY: 'Faltan campos obligatorios.',
+    EMPTY: 'El formulario llegó vacío.',
+    PROJECT_NOT_FOUND: 'El formulario no está disponible. Escríbenos a aespinoza@oopart.cl',
+    FORM_NOT_FOUND: 'El formulario no está disponible. Escríbenos a aespinoza@oopart.cl',
+    NO_FILE_UPLOADS: 'No aceptamos archivos adjuntos.',
+    INACTIVE: 'El formulario está desactivado. Escríbenos a aespinoza@oopart.cl'
+  };
+
+  function traducir(errores) {
+    for (var i = 0; i < errores.length; i++) {
+      if (MOTIVOS[errores[i].code]) return MOTIVOS[errores[i].code];
+    }
+    return '';
+  }
+
   var form = document.getElementById('contact-form');
   var status = document.getElementById('form-status');
   if (!form || !status) return;          // paginas sin formulario de contacto
@@ -106,11 +126,8 @@
             showStatus('ok', '✓ Mensaje enviado. Te contactaremos dentro de 24 horas hábiles.');
           } else {
             // mostrar el motivo real en vez de un error generico
-            var motivo = (data.errors || []).map(function (x) { return x.message; }).join('. ')
-                       || data.error || '';
-            showStatus('err', motivo
-              ? 'No se pudo enviar: ' + motivo + ' Si persiste, escríbenos a aespinoza@oopart.cl'
-              : 'No pudimos enviar el mensaje. Escríbenos directo a aespinoza@oopart.cl');
+            var motivo = traducir(data.errors || []);
+            showStatus('err', motivo || 'No pudimos enviar el mensaje. Escríbenos directo a aespinoza@oopart.cl');
           }
           restaurar();
         });
