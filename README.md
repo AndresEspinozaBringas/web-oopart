@@ -13,12 +13,35 @@ sirve el repositorio como archivos estáticos. Un push a `master` publica.
 
 | Ruta | Qué es |
 |---|---|
-| `index.html` | La página completa |
+| `index.html` | Portada |
+| `gemelos-digitales/index.html` | Página del servicio de gemelos digitales |
+| `app.js` | JS compartido por todas las páginas |
+| `analytics.js` | Carga GA4 **solo** si hay un ID configurado |
 | `styles.css` | **Generado.** No editar a mano |
 | `src/input.css` | Fuente de estilos: tokens de color y componentes |
-| `tailwind.config.js` | Config de Tailwind |
-| `assets/` | Logos, favicons e imagen Open Graph (publicados) |
+| `tailwind.config.js` | Config de Tailwind (lista las páginas a escanear) |
+| `robots.txt`, `sitemap.xml` | SEO. Al crear una página, agrégala al sitemap |
+| `assets/` | Logos, favicons e imágenes Open Graph (publicados) |
 | `brand/` | Originales del logo en JPEG (no se publican) |
+
+## Google Analytics
+
+Está preparado pero **apagado**. Para activarlo, pon el identificador de
+medición en el `<head>` de cada página:
+
+```html
+<script>window.OOPART_GA_ID = 'G-XXXXXXXXXX';</script>
+```
+
+Mientras esté vacío no se carga nada, no se deja ninguna cookie y no se
+envía ningún dato.
+
+## Agregar una página
+
+1. Crea `mi-pagina/index.html` (copia la estructura de `gemelos-digitales/`)
+2. Agrégala a `content` en `tailwind.config.js`, o sus clases no se compilan
+3. Agrégala a `sitemap.xml`
+4. `npm run build` y commitea el resultado
 
 ## Editar estilos
 

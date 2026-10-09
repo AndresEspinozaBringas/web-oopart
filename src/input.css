@@ -366,3 +366,44 @@ select option { background: var(--c-surface); color: var(--c-text); }
   }
   .js .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ── MIGA DE PAN ── */
+.breadcrumb {
+  font-size: .75rem; color: var(--c-muted);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.breadcrumb a { color: var(--c-accent); transition: opacity .2s; }
+.breadcrumb a:hover { opacity: .75; }
+.breadcrumb span[aria-hidden] { margin: 0 .4rem; opacity: .55; }
+
+/* ── LISTA DE CARACTERISTICAS ── */
+.feature-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.5rem; }
+.feature-list li {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--c-brand-bd);
+  transition: border-color .3s;
+}
+.feature-list li:hover { border-left-color: var(--c-accent); }
+
+/* ── LLAMADA A LA DEMO ── */
+.demo-cta {
+  display: flex; flex-direction: column; gap: 1.5rem;
+  align-items: flex-start;
+  border: 1px solid var(--c-brand-bd); border-radius: .75rem;
+  padding: 2rem;
+  background:
+    radial-gradient(ellipse at left center, var(--c-brand-bg) 0%, transparent 70%),
+    var(--c-surface);
+  transition: background .35s ease, border-color .35s ease;
+}
+@media (min-width: 768px) {
+  .demo-cta { flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem; }
+}
+
+/* ── ENLACE AL SITIO DEL CASO ── */
+.case-link { margin-top: 1rem; padding-top: .85rem; border-top: 1px solid var(--c-border); }
+.case-link a {
+  font-size: .75rem; color: var(--c-accent);
+  font-family: 'IBM Plex Sans', sans-serif; transition: opacity .2s;
+}
+.case-link a:hover { opacity: .75; }

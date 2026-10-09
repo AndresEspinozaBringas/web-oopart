@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Gemelos digitales para operaciones logísticas e industriales — Oopart</title>
+  <meta name="description" content="Construimos gemelos digitales: réplicas en 3D de tu operación alimentadas con datos reales de RFID, ERP y sensores. Detecta cuellos de botella y compara escenarios antes de invertir. Demo interactiva disponible." />
+  <link rel="canonical" href="https://oopart.cl/gemelos-digitales/" />
+  <meta name="theme-color" content="#30428A" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://oopart.cl/gemelos-digitales/" />
+  <meta property="og:site_name" content="Oopart" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:title" content="Gemelos digitales para operaciones logísticas e industriales" />
+  <meta property="og:description" content="Réplicas en 3D de tu operación con datos reales de RFID, ERP y sensores. Prueba decisiones en el modelo antes de tocar la planta." />
+  <meta property="og:image" content="https://oopart.cl/assets/og-gemelos.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gemelos digitales — Oopart" />
+  <meta name="twitter:description" content="Réplicas en 3D de tu operación con datos reales. Demo interactiva disponible." />
+  <meta name="twitter:image" content="https://oopart.cl/assets/og-gemelos.png" />
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/assets/icon-512.png" type="image/png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="/assets/icon-180.png" />
+
+  <script>
+    (function () {
+      var t = 'light';
+      try { t = localStorage.getItem('oopart-theme') || 'light'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Google Analytics 4: pon aqui el identificador de medicion (G-XXXXXXXXXX) para activarlo -->
+  <script>window.OOPART_GA_ID = '';</script>
+  <script src="/analytics.js" defer></script>
+
+  <link rel="stylesheet" href="/styles.css?v=a3fdda3f" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Construcción de gemelos digitales",
+    "serviceType": "Gemelo digital / Digital twin",
+    "description": "Diseño y construcción de gemelos digitales de operaciones logísticas e industriales, alimentados con datos de RFID, ERP y sensores.",
+    "provider": { "@type": "Organization", "name": "Oopart", "url": "https://oopart.cl/" },
+    "areaServed": { "@type": "Country", "name": "Chile" },
+    "url": "https://oopart.cl/gemelos-digitales/"
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
+<nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center shrink-0" aria-label="Oopart — inicio">
+      <img src="/assets/logo-lockup-white.png" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
+      <img src="/assets/logo-lockup-blue.png" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      <a href="/#servicios"  class="nav-link text-sm font-body">Servicios</a>
+      <a href="/#proceso"    class="nav-link text-sm font-body">Proceso</a>
+      <a href="/#resultados" class="nav-link text-sm font-body">Resultados</a>
+      <a href="/#contacto"   class="nav-link text-sm font-body">Contacto</a>
+    </div>
+
+    <div class="hidden md:flex items-center gap-3">
+      <button id="theme-btn" class="theme-toggle" aria-label="Cambiar a tema oscuro">
+        <svg class="icon-moon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <a href="/#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded">Conversemos →</a>
+    </div>
+
+    <div class="md:hidden flex items-center gap-2">
+      <button id="theme-btn-mobile" class="theme-toggle" aria-label="Cambiar a tema oscuro">
+        <svg class="icon-moon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button id="menu-btn" class="nav-link p-1" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden">
+    <div class="flex flex-col px-6 py-4 gap-4">
+      <a href="/#servicios"  class="nav-link text-sm" data-close>Servicios</a>
+      <a href="/#proceso"    class="nav-link text-sm" data-close>Proceso</a>
+      <a href="/#resultados" class="nav-link text-sm" data-close>Resultados</a>
+      <a href="/#contacto"   class="nav-link text-sm" data-close>Contacto</a>
+      <a href="/#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded w-fit" data-close>Conversemos →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero-grid relative flex items-center pt-16 overflow-hidden" style="min-height:auto">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="max-w-6xl mx-auto px-6 py-20 md:py-24 w-full">
+    <nav class="breadcrumb reveal" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>Gemelos digitales</span>
+    </nav>
+
+    <div class="max-w-3xl">
+      <div class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 mt-6 reveal">
+        <span class="dot-pulse" aria-hidden="true"></span>
+        <span class="text-xs font-body tracking-wider t-accent">Demo interactiva disponible</span>
+      </div>
+
+      <h1 class="font-display font-semibold text-4xl md:text-5xl mb-6 t-text reveal" style="transition-delay:.1s">
+        <span class="line">Gemelos digitales</span>
+        <span class="line gradient-text">de tu operación real</span>
+      </h1>
+
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal t-muted2" style="transition-delay:.2s">
+        Una réplica en 3D de tu planta, bodega o centro de distribución, alimentada con los
+        datos que ya genera tu operación. Sirve para ver lo que hoy no se ve, probar decisiones
+        antes de ejecutarlas y discutir con el equipo sobre un modelo, no sobre una planilla.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay:.3s">
+        <a href="https://gemelo.oopart.cl/" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded" target="_blank" rel="noopener">
+          Abrir la demo en vivo →
+        </a>
+        <a href="/#contacto" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded">
+          Conversemos sobre tu caso
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- QUÉ ES -->
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div class="reveal">
+        <span class="eyebrow">Qué es</span>
+        <h2 class="font-display font-bold text-3xl t-text mt-2 mb-5">No es una maqueta.<br />Es tu operación, con sus datos.</h2>
+        <p class="t-muted2 font-body leading-relaxed mb-4">
+          Un gemelo digital es un modelo que refleja cómo se comporta una operación física y se
+          actualiza con sus datos reales: lecturas de RFID, eventos del ERP, sensores, señales de
+          equipos. A diferencia de un render o un dashboard, el gemelo conserva la geometría y los
+          tiempos: dónde está cada cosa, cuánto demora y qué espera a qué.
+        </p>
+        <p class="t-muted2 font-body leading-relaxed">
+          Eso permite responder preguntas que una planilla no responde bien: por qué se llenan los
+          andenes a cierta hora, qué pasa si se suma un turno, dónde se acumula la espera, cuánto
+          cuesta realmente una decisión antes de tomarla.
+        </p>
+      </div>
+
+      <div class="reveal" style="transition-delay:.15s">
+        <ul class="feature-list">
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Ves la operación completa</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">Patio, andenes, interior de bodega y flujo de pallets en una sola vista, en vez de repartidos en sistemas distintos.</p>
+          </li>
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Encuentras el cuello de botella</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">El modelo muestra dónde se acumula la espera y por qué, con los tiempos reales de cada etapa.</p>
+          </li>
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Comparas escenarios sin riesgo</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">Más andenes, otro layout, otra política de citas: se prueba en el modelo antes de mover un solo equipo.</p>
+          </li>
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Alineas al equipo</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">Operaciones, TI y gerencia discuten sobre la misma imagen. Es más rápido acordar mirando el flujo que leyendo un informe.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- LA DEMO -->
+<section class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 reveal">
+      <span class="eyebrow">La demo</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl t-text mt-2 mb-4">Un centro de distribución,<br />funcionando en tu navegador.</h2>
+      <p class="t-muted2 font-body max-w-2xl">
+        Construimos una demo abierta para que no haya que imaginarse nada. Modela un centro de
+        distribución con control de accesos, trazabilidad por RFID e integración con el ERP.
+        Se abre en el navegador, sin instalar nada.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <article class="service-card rounded-xl p-7 reveal">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Patio y control de acceso</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed mb-4">
+          Cámaras de patente en entrada y salida, portería, romana de pesaje e ingreso a patio.
+          Cada camión queda trazado desde que llega hasta que sale.
+        </p>
+        <p class="text-xs t-muted font-body">Validación automática contra documentos y cita agendada.</p>
+      </article>
+
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.1s">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Andenes y bodega</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed mb-4">
+          Seis andenes con portales de recepción y puntos de verificación de carga. El interior de
+          la bodega se puede abrir para seguir pallets, equipos y la envolvedora.
+        </p>
+        <p class="text-xs t-muted font-body">Etiquetas LPN, códigos SSCC y tarja verificada.</p>
+      </article>
+
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.2s">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Eventos del ERP</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed mb-4">
+          Guías de despacho, recepciones conformes e inicios de carga llegan al modelo junto con
+          las lecturas de los equipos, en una sola línea de tiempo.
+        </p>
+        <p class="text-xs t-muted font-body">Camiones en planta, en espera, andenes ocupados y permanencia.</p>
+      </article>
+    </div>
+
+    <div class="demo-cta reveal">
+      <div>
+        <h3 class="font-display font-semibold text-xl t-text mb-2">Pruébala tú mismo</h3>
+        <p class="text-sm t-muted2 font-body">Se abre en una pestaña nueva. Toca un camión, un equipo o un pallet para seguirlo.</p>
+      </div>
+      <a href="https://gemelo.oopart.cl/" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded shrink-0" target="_blank" rel="noopener">
+        Abrir gemelo.oopart.cl →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- APLICACIONES -->
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 reveal">
+      <span class="eyebrow">Dónde se aplica</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl t-text mt-2 mb-4">Cualquier operación con<br />espacio, tiempo y colas.</h2>
+      <p class="t-muted2 font-body max-w-2xl">La demo es logística porque es un caso claro, pero el método sirve donde haya flujo físico que medir.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="process-step reveal">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Centros de distribución</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Agendamiento de citas, ocupación de andenes, tiempos de permanencia y trazabilidad de carga.</p>
+      </article>
+      <article class="process-step reveal" style="transition-delay:.08s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Plantas industriales</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Balance de líneas, detención de equipos, movimiento de materiales y cambios de layout.</p>
+      </article>
+      <article class="process-step reveal" style="transition-delay:.16s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Puertos y terminales</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Flujo de camiones, acceso, pesaje y coordinación de ventanas de atención.</p>
+      </article>
+      <article class="process-step reveal" style="transition-delay:.24s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Retail y última milla</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Preparación de pedidos, consolidación de rutas y uso de espacio en centros urbanos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- CÓMO LO CONSTRUIMOS -->
+<section class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 reveal">
+      <span class="eyebrow">Cómo lo construimos</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl t-text mt-2 mb-4">Empezamos por la pregunta,<br />no por el modelo.</h2>
+      <p class="t-muted2 font-body max-w-2xl">
+        Un gemelo que lo modela todo no sirve para nada. Partimos definiendo qué decisión
+        necesitas tomar, y el modelo incluye solo lo que la afecta.
+      </p>
+    </div>
+
+    <ol class="process-grid list-none">
+      <li class="process-step reveal">
+        <span class="process-num">01</span>
+        <h3 class="font-display font-semibold text-base t-text mb-2">La pregunta</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Qué decisión está en juego y qué indicador la mide. Sin eso, el gemelo es decoración.</p>
+      </li>
+      <li class="process-step reveal" style="transition-delay:.08s">
+        <span class="process-num">02</span>
+        <h3 class="font-display font-semibold text-base t-text mb-2">Los datos</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Revisamos qué señales existen hoy —RFID, ERP, sensores, planillas— y cuáles faltan.</p>
+      </li>
+      <li class="process-step reveal" style="transition-delay:.16s">
+        <span class="process-num">03</span>
+        <h3 class="font-display font-semibold text-base t-text mb-2">El modelo</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Construimos la geometría y las reglas de flujo, y las contrastamos con un período real conocido.</p>
+      </li>
+      <li class="process-step reveal" style="transition-delay:.24s">
+        <span class="process-num">04</span>
+        <h3 class="font-display font-semibold text-base t-text mb-2">Los escenarios</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Se prueban las alternativas sobre el modelo validado y se comparan con el mismo indicador.</p>
+      </li>
+      <li class="process-step reveal" style="transition-delay:.32s">
+        <span class="process-num">05</span>
+        <h3 class="font-display font-semibold text-base t-text mb-2">En operación</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed">Si aporta, queda conectado a los datos en vivo para seguir usándolo día a día.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="cta-block text-center py-14 px-6 rounded-xl reveal">
+      <p class="t-muted2 text-sm font-body mb-2">¿Tienes una operación que cuesta explicar en una planilla?</p>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mb-6">Veamos si un gemelo digital te sirve</h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">Conversemos →</a>
+        <a href="https://gemelo.oopart.cl/" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded" target="_blank" rel="noopener">Ver la demo primero</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="py-12 sec-bg footer-top">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="text-center md:text-left">
+        <a href="/" aria-label="Oopart — inicio">
+          <img src="/assets/logo-full-white.png" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" />
+          <img src="/assets/logo-full-blue.png" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" />
+        </a>
+        <p class="text-xs t-muted font-body mt-3">Out of Place Artefact — Tecnología que transforma.</p>
+      </div>
+      <nav class="flex gap-6" aria-label="Pie de página">
+        <a href="/#servicios"  class="nav-link text-xs font-body">Servicios</a>
+        <a href="/#proceso"    class="nav-link text-xs font-body">Proceso</a>
+        <a href="/#resultados" class="nav-link text-xs font-body">Resultados</a>
+        <a href="/#contacto"   class="nav-link text-xs font-body">Contacto</a>
+      </nav>
+      <p class="text-xs t-muted font-body">© <span id="year">2026</span> Oopart. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+
+</body>
+</html>
