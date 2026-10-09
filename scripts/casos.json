@@ -1,0 +1,113 @@
+[
+  {
+    "slug": "humphreys",
+    "cliente": "Humphreys",
+    "industria": "Clasificadora de Riesgo",
+    "titulo": "Automatización de reportes financieros",
+    "titleSeo": "Automatización de reportes financieros en una clasificadora de riesgo — Caso Humphreys",
+    "descripcion": "Cómo redujimos de 30 a 5 días el proceso de análisis financiero de Humphreys, clasificadora de riesgo, automatizando la extracción, limpieza y consolidación de datos.",
+    "resumen": "Un proceso de análisis financiero que tomaba 30 días y dependía por completo del trabajo manual pasó a cerrarse en 5, con 90% menos errores de procesamiento.",
+    "desafio": [
+      "Una clasificadora de riesgo vive de emitir juicios fundados sobre la solvencia de empresas e instrumentos financieros. Ese juicio se construye sobre estados financieros, memorias y antecedentes que llegan en formatos distintos, de fuentes distintas y en momentos distintos.",
+      "En Humphreys ese trabajo era 100% manual. Un analista descargaba los documentos, extraía las cifras a planilla, las normalizaba para que fueran comparables entre períodos y empresas, y recién entonces empezaba el análisis propiamente tal. El ciclo completo tomaba alrededor de 30 días.",
+      "El costo no era solo el tiempo. Cada transcripción manual es una oportunidad de error, y un error en una cifra base se arrastra silenciosamente hasta el informe final. Revisar para detectarlos consumía todavía más horas de gente cara, y el equipo terminaba dedicando a mover datos el tiempo que debía dedicar a interpretarlos."
+    ],
+    "solucion": [
+      "Automatizamos la cadena completa que va desde el documento fuente hasta el informe emitido, respetando los criterios de análisis que el equipo ya tenía definidos.",
+      "La extracción toma los datos de los documentos originales sin transcripción manual. La limpieza normaliza formatos, unidades y períodos para que las cifras sean comparables. La consolidación arma la base sobre la que se calcula la clasificación. Y la generación de informes produce el documento con los datos ya validados.",
+      "El punto no fue reemplazar el criterio del analista, que es justamente lo que una clasificadora vende. Fue sacarle de encima el trabajo mecánico para que ese criterio se aplique sobre datos confiables y a tiempo."
+    ],
+    "capacidades": ["Automatización de procesos", "Extracción y normalización de datos", "Generación automática de documentos", "Integración de fuentes"],
+    "metricas": [
+      {"v": "83%", "l": "Reducción de tiempo"},
+      {"v": "90%", "l": "Menos errores"},
+      {"v": "30→5", "l": "Días de proceso"},
+      {"v": "14%", "l": "Aumento de ventas"}
+    ],
+    "cierre": "Pasar de 30 a 5 días no solo ahorra horas: cambia qué puede ofrecer el negocio. Con el ciclo más corto, el equipo atiende más casos con la misma dotación."
+  },
+  {
+    "slug": "accuhealth",
+    "cliente": "Accuhealth",
+    "industria": "Telemedicina",
+    "titulo": "App de monitoreo y control médico",
+    "titleSeo": "App de telemonitoreo conectada a dispositivos Bluetooth — Caso Accuhealth",
+    "descripcion": "Cómo una app conectada a dispositivos médicos Bluetooth redujo 34% los costos de renovación tecnológica de Accuhealth y alcanzó 43% de adopción entre pacientes.",
+    "resumen": "Los dispositivos de telemonitoreo se perdían y renovarlos costaba cada vez más. Una app conectada por Bluetooth cambió la ecuación: 43% de adopción y 34% de ahorro en renovación.",
+    "desafio": [
+      "El telemonitoreo de pacientes crónicos funciona con dispositivos que miden signos vitales en el domicilio y envían los datos al equipo clínico. El modelo tiene un problema estructural: el hardware es caro, se deteriora, se pierde y hay que reponerlo.",
+      "Accuhealth enfrentaba las dos caras del problema. Por un lado, costos crecientes de renovación tecnológica, porque cada ciclo exigía reponer equipos. Por otro, la pérdida de dispositivos entregados a pacientes, que suma al costo y además deja huecos en el seguimiento clínico.",
+      "Detrás de eso hay un asunto más de fondo: si el paciente no incorpora el dispositivo a su rutina, el equipo no se usa, los datos no llegan y el control médico se vuelve intermitente justo donde la continuidad importa."
+    ],
+    "solucion": [
+      "Construimos una aplicación móvil que se conecta directamente a los dispositivos Bluetooth del paciente y que funciona como el punto de encuentro entre la medición y el equipo clínico.",
+      "La app integra el monitoreo en una sola vista, emite alertas automáticas cuando una lectura se sale de rango y mantiene el seguimiento médico del paciente en el tiempo, con su historial disponible para quien lo atiende.",
+      "Apoyarse en el teléfono del paciente, que ya tiene y ya cuida, descarga parte del peso que antes recaía sobre el hardware dedicado. Y las alertas automáticas cambian la lógica del control: el equipo clínico deja de revisar todo para enfocarse en lo que se salió de rango."
+    ],
+    "capacidades": ["Desarrollo de apps móviles", "Integración con dispositivos Bluetooth", "Alertas automáticas", "Seguimiento clínico"],
+    "metricas": [
+      {"v": "43%", "l": "Tasa de adopción"},
+      {"v": "34%", "l": "Ahorro en renovación"},
+      {"v": "23%", "l": "Eficiencia en controles"},
+      {"v": "16%", "l": "Ahorro operativo"}
+    ],
+    "cierre": "La adopción es el indicador que manda en telemedicina: un dispositivo que el paciente no usa no mide nada. El 43% explica buena parte de los otros tres números."
+  },
+  {
+    "slug": "isapre-fundacion",
+    "cliente": "Isapre Fundación",
+    "industria": "Salud Previsional",
+    "titulo": "Plataforma de suscripción electrónica",
+    "titleSeo": "Plataforma de suscripción electrónica con firma digital sobre Azure — Caso Isapre Fundación",
+    "descripcion": "Cómo la suscripción de planes de salud pasó de 3 días a 30 minutos, con 63% menos fraudes y 85% menos errores documentales, sobre una plataforma con firma electrónica en Azure.",
+    "resumen": "La suscripción de un plan de salud tomaba 3 días y se hacía en papel. Con firma electrónica y validación médica en línea, el cierre bajó a 30 minutos.",
+    "desafio": [
+      "Suscribir un plan de salud previsional implica recoger antecedentes del afiliado, declarar su situación de salud, firmar un contrato y dejar todo en custodia. Hecho en papel, cada uno de esos pasos es un punto de falla.",
+      "En Isapre Fundación el proceso era manual y arrastraba tres problemas encadenados. Había fraudes, porque un proceso en papel es difícil de verificar en el momento. Había errores documentales, porque los formularios se completaban a mano y los faltantes aparecían después. Y el cierre de una venta tomaba 3 días, con el ejecutivo y el cliente esperando mientras el expediente iba y venía.",
+      "En un negocio donde el cliente compara alternativas, tres días entre la decisión y la firma son tres días para arrepentirse o para que otro ofrezca algo mejor."
+    ],
+    "solucion": [
+      "Levantamos una plataforma web que digitaliza el proceso completo de suscripción, construida sobre Azure.",
+      "La firma electrónica reemplaza el papel y deja constancia verificable de quién firmó y cuándo. La validación médica en línea revisa las declaraciones en el momento, no días después. Y la integración entre el front office —donde el ejecutivo atiende— y el back office —donde se procesa y custodia— elimina el traspaso manual de expedientes que generaba la mayor parte de los errores.",
+      "Toda la documentación queda en custodia digital, lo que resuelve de paso el problema de tener que ubicar un contrato físico cuando se necesita."
+    ],
+    "capacidades": ["Desarrollo de plataformas web", "Firma electrónica", "Integración front/back office", "Infraestructura en Azure"],
+    "metricas": [
+      {"v": "63%", "l": "Menos fraudes"},
+      {"v": "85%", "l": "Menos errores documentales"},
+      {"v": "30m", "l": "Cierre de venta (antes 3 días)"},
+      {"v": "100%", "l": "Custodia digital"}
+    ],
+    "cierre": "Pasar de 3 días a 30 minutos cambia el momento de la venta: el plan se cierra mientras el cliente todavía está decidido."
+  },
+  {
+    "slug": "buildtrack",
+    "cliente": "Grupo S3L",
+    "industria": "Construcción",
+    "titulo": "BuildTrack, plataforma de gestión de obras",
+    "titleSeo": "BuildTrack: software de gestión de obras para la normativa chilena — Caso Grupo S3L",
+    "descripcion": "Cómo construimos BuildTrack para Grupo S3L: estados de pago bajo la Ley 21.131, libro de obras digital con validez legal, curva S de avance y cumplimiento DS76.",
+    "resumen": "Las obras se gestionaban en Excel y los estados de pago se pasaban de los 30 días legales. BuildTrack lleva hoy más de 1.200 estados de pago procesados y cero multas.",
+    "desafio": [
+      "Una obra de construcción mueve cientos de millones de pesos y se controla, en la mayoría de las empresas medianas de Chile, con planillas Excel. Funciona hasta que deja de funcionar.",
+      "Grupo S3L enfrentaba el conjunto completo de problemas que eso genera. Los estados de pago se pasaban del plazo de 30 días que fija la Ley 21.131, lo que expone a la empresa a intereses y a que la deuda adquiera mérito ejecutivo. El libro de obras seguía en papel, con las anotaciones del ITO y del jefe de terreno dispersas. Y la trazabilidad no resistía una fiscalización: cuando alguien pedía evidencia de una partida o de un subcontratista, había que reconstruirla a mano desde correos y carpetas.",
+      "El mercado tampoco ofrecía una salida cómoda: las plataformas globales son caras, se cobran en dólares y están construidas sobre normativas que no son la chilena. Excel quedaba chico y lo que seguía quedaba grande."
+    ],
+    "solucion": [
+      "Construimos BuildTrack, una plataforma web diseñada desde cero sobre la normativa chilena, no adaptada después.",
+      "El módulo de estados de pago cuenta los plazos de la Ley 21.131, calcula el tiempo real que demora el mandante en pagar y marca los documentos vencidos con el monto exigible. El libro de obras digital emite anotaciones foliadas con validez legal, firmadas y exportables en orden para una fiscalización. El control de avance aplica valor ganado y entrega la curva S física y financiera en tiempo real.",
+      "Sobre eso se montó el cumplimiento normativo: checklist DS76 por subcontratista que bloquea el finiquito si falta documentación, matriz de riesgos DS44, registro de residuos NCh3562 e índices de accidentabilidad de la Ley 16.744.",
+      "Un criterio de diseño que vale la pena mencionar: cuando una obra no tiene datos para una norma, el tablero muestra «sin datos», nunca un visto bueno. Un tablero incómodo es más útil que un cumplimiento sin evidencia."
+    ],
+    "capacidades": ["Desarrollo de plataformas web", "Modelado de normativa en software", "Control de avance EVM", "Gestión documental con trazabilidad"],
+    "metricas": [
+      {"v": "65%", "l": "Menos tiempo de cierre de estados de pago"},
+      {"v": "+30", "l": "Obras activas"},
+      {"v": "+1.200", "l": "Estados de pago procesados"},
+      {"v": "0", "l": "Multas Ley 21.131"}
+    ],
+    "cierre": "BuildTrack dejó de ser un proyecto interno para convertirse en producto: hoy opera con más de 30 obras activas.",
+    "sitio": {"url": "https://buildtrack.cl/", "texto": "Ver buildtrack.cl"},
+    "clienteUrl": "http://www.studio3l.cl/"
+  }
+]

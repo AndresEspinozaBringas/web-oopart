@@ -99,6 +99,10 @@
         return res.json().catch(function () { return {}; }).then(function (data) {
           if (res.ok) {
             form.reset();
+            // conversion en GA4: evento recomendado para formularios de contacto
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'generate_lead', { form_id: 'contacto' });
+            }
             showStatus('ok', '✓ Mensaje enviado. Te contactaremos dentro de 24 horas hábiles.');
           } else {
             // mostrar el motivo real en vez de un error generico
