@@ -62,6 +62,7 @@ const pie = `
         <a href="/#proceso" class="nav-link text-xs font-body">Proceso</a>
         <a href="/#resultados" class="nav-link text-xs font-body">Resultados</a>
         <a href="/#contacto" class="nav-link text-xs font-body">Contacto</a>
+        <a href="/privacidad/" class="nav-link text-xs font-body">Privacidad</a>
       </nav>
       <p class="text-xs t-muted font-body">© <span id="year">2026</span> Oopart. Todos los derechos reservados.</p>
     </div>
@@ -116,6 +117,7 @@ for (const c of casos) {
 
   <!-- Google Analytics 4: pon aqui el identificador de medicion (G-XXXXXXXXXX) para activarlo -->
   <script>window.OOPART_GA_ID = 'G-1FGGRMWGPE';</script>
+  <script src="/consent.js"></script>
   <script src="/analytics.js" defer></script>
 
   <link rel="stylesheet" href="/styles.css" />
