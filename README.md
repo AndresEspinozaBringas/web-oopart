@@ -20,6 +20,8 @@ sirve el repositorio como archivos estáticos. Un push a `master` publica.
 | `scripts/build-casos.mjs` | Genera las páginas de caso desde el JSON |
 | `app.js` | JS compartido por todas las páginas |
 | `analytics.js` | Carga GA4 **solo** si hay un ID configurado |
+| `consent.js` | Consent Mode v2 y banner de cookies. Va **antes** de analytics.js |
+| `privacidad/index.html` | Política de privacidad y cookies |
 | `styles.css` | **Generado.** No editar a mano |
 | `src/input.css` | Fuente de estilos: tokens de color y componentes |
 | `tailwind.config.js` | Config de Tailwind (lista las páginas a escanear) |
@@ -38,6 +40,11 @@ medición en el `<head>` de cada página:
 
 Mientras esté vacío no se carga nada, no se deja ninguna cookie y no se
 envía ningún dato.
+
+`consent.js` debe cargarse **antes** que `analytics.js`: declara el estado
+de consentimiento por defecto (todo denegado) y monta el banner. Sin
+aceptación, GA4 se carga pero no escribe cookies. La decisión se guarda 12
+meses y se puede revisar desde `/privacidad/`.
 
 ## Agregar o editar un caso de éxito
 
