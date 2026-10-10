@@ -29,20 +29,6 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // Diagnostico temporal: permite saber que version esta desplegada y si el
-    // secreto llega al runtime, sin revelar su valor. Quitar cuando el
-    // formulario quede estable.
-    if (url.pathname === '/api/estado') {
-      const k = env.RESEND_API_KEY;
-      return new Response(JSON.stringify({
-        marca: 'diag-1',
-        tieneKey: Boolean(k),
-        largoKey: k ? String(k).length : 0,
-        tieneMailTo: Boolean(env.MAIL_TO),
-        tieneMailFrom: Boolean(env.MAIL_FROM),
-      }), { headers: { 'Content-Type': 'application/json' } });
-    }
-
     if (url.pathname === '/api/contacto') {
       if (request.method === 'OPTIONS') return preflight(request);
       if (request.method !== 'POST') {

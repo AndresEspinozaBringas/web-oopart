@@ -4,6 +4,10 @@ Sitio de [oopart.cl](https://oopart.cl) — una sola página estática.
 
 ## Despliegue
 
+**La rama de producción es `master`.** Otras ramas compilan pero usan
+`wrangler versions upload`, que sube la versión sin activarla: el panel las
+muestra en verde y producción no cambia.
+
 Cloudflare Workers (`wrangler.jsonc`, en la rama `cloudflare/workers-autoconfig-2`)
 sirve el repositorio como archivos estáticos. Un push a `master` publica.
 
