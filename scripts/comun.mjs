@@ -1,6 +1,6 @@
 // Cabecera, navegacion y pie compartidos por las paginas generadas.
 export const GA = 'G-1FGGRMWGPE';
-export const CLARITY = '';   // pegar aqui el ID de Microsoft Clarity
+export const CLARITY = 'yvkufc95j3';
 export const LINKEDIN = 'https://www.linkedin.com/company/22304283/';
 
 export const esc = (s) =>

@@ -117,6 +117,7 @@ for (const c of casos) {
 
   <!-- Google Analytics 4: pon aqui el identificador de medicion (G-XXXXXXXXXX) para activarlo -->
   <script>window.OOPART_GA_ID = 'G-1FGGRMWGPE';</script>
+  <script>window.OOPART_CLARITY_ID = 'yvkufc95j3';</script>
   <script src="/consent.js"></script>
   <script src="/analytics.js" defer></script>
 
