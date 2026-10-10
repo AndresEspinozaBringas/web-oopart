@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Optimización de procesos: del levantamiento a la automatización — Oopart</title>
+  <meta name="description" content="Evaluamos cómo funcionan hoy tus procesos, dónde se pierde tiempo y qué conviene automatizar. Consultoría en optimización de procesos y transformación digital en Chile." />
+  <link rel="canonical" href="https://oopart.cl/optimizacion-de-procesos/" />
+  <meta name="theme-color" content="#30428A" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://oopart.cl/optimizacion-de-procesos/" />
+  <meta property="og:site_name" content="Oopart" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:title" content="Optimización de procesos — Oopart" />
+  <meta property="og:description" content="Primero entender el proceso, después automatizarlo. Automatizar un proceso malo solo lo hace fallar más rápido." />
+  <meta property="og:image" content="https://oopart.cl/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Optimización de procesos — Oopart" />
+  <meta name="twitter:description" content="Primero entender el proceso, después automatizarlo. Automatizar un proceso malo solo lo hace fallar más rápido." />
+  <meta name="twitter:image" content="https://oopart.cl/assets/og-image.png" />
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/assets/icon-512.png" type="image/png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="/assets/icon-180.png" />
+
+  <script>
+    (function () {
+      var t = 'light';
+      try { t = localStorage.getItem('oopart-theme') || 'light'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script>window.OOPART_GA_ID = 'G-1FGGRMWGPE';</script>
+  <script src="/consent.js"></script>
+  <script src="/analytics.js" defer></script>
+
+  <link rel="stylesheet" href="/styles.css?v=8f749b60" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Optimización de procesos",
+    "description": "Levantamiento, análisis y rediseño de procesos de negocio, con reducción de trabajo manual e incorporación de tecnología donde aporta.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Oopart",
+      "url": "https://oopart.cl/"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Chile"
+    },
+    "url": "https://oopart.cl/optimizacion-de-procesos/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://oopart.cl/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Optimización de procesos",
+        "item": "https://oopart.cl/optimizacion-de-procesos/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto demora un levantamiento de procesos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende de cuántas personas intervienen y de cuántos sistemas toca. Un proceso acotado puede levantarse en semanas; uno que cruza varias áreas toma más, porque la mitad del trabajo es reunir lo que cada persona hace de memoria y nadie tiene escrito."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay que cambiar de sistema para optimizar un proceso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Casi nunca. La mayoría de las pérdidas no están en los sistemas sino entre ellos: traspasos manuales, datos que se copian de una pantalla a otra, esperas por aprobaciones. Eso se resuelve sin reemplazar lo que ya funciona."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué diferencia hay entre optimizar procesos y transformación digital?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La transformación digital es el objetivo; la optimización de procesos es por dónde se empieza. Digitalizar un proceso que nadie entendió primero produce una versión electrónica del mismo desorden."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center shrink-0" aria-label="Oopart — inicio">
+      <img src="/assets/logo-lockup-white.png" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
+      <img src="/assets/logo-lockup-blue.png" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="/#servicios" class="nav-link text-sm font-body">Servicios</a>
+      <a href="/#proceso" class="nav-link text-sm font-body">Proceso</a>
+      <a href="/#resultados" class="nav-link text-sm font-body">Resultados</a>
+      <a href="/#contacto" class="nav-link text-sm font-body">Contacto</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <button id="theme-btn" class="theme-toggle" aria-label="Cambiar a tema oscuro">
+        <svg class="icon-moon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <a href="/#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded">Conversemos →</a>
+    </div>
+    <div class="md:hidden flex items-center gap-2">
+      <button id="theme-btn-mobile" class="theme-toggle" aria-label="Cambiar a tema oscuro">
+        <svg class="icon-moon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button id="menu-btn" class="nav-link p-1" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden">
+    <div class="flex flex-col px-6 py-4 gap-4">
+      <a href="/#servicios" class="nav-link text-sm" data-close>Servicios</a>
+      <a href="/#proceso" class="nav-link text-sm" data-close>Proceso</a>
+      <a href="/#resultados" class="nav-link text-sm" data-close>Resultados</a>
+      <a href="/#contacto" class="nav-link text-sm" data-close>Contacto</a>
+      <a href="/#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded w-fit" data-close>Conversemos →</a>
+    </div>
+  </div>
+</nav>
+<main id="main">
+
+<section class="hero-grid relative flex items-center pt-16 overflow-hidden" style="min-height:auto">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 w-full">
+    <nav class="breadcrumb reveal" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>Optimización de procesos</span>
+    </nav>
+
+    <div class="max-w-3xl mt-6">
+      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal" style="transition-delay:.1s">
+        <span class="line">Optimización</span>
+        <span class="line gradient-text">de procesos</span>
+      </h1>
+
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal t-muted2" style="transition-delay:.2s">
+        Primero entender cómo funciona realmente el proceso. Después decidir qué automatizar.
+        En ese orden, porque automatizar un proceso malo solo consigue que falle más rápido.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay:.3s">
+        <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">Conversemos sobre tu caso</a>
+        <a href="/casos/humphreys/" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded">Ver un caso real</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="prosa reveal">
+      <span class="eyebrow">El problema</span>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mb-6" style="margin-top:.5rem">Casi ningún proceso fue diseñado</h2>
+
+      <p>
+        Los procesos de una empresa rara vez se diseñan. Se acumulan. Alguien resolvió algo de
+        una manera, después se sumó un paso para cubrir un problema puntual, luego entró un
+        sistema nuevo que no conversaba con el anterior y se agregó una planilla intermedia para
+        salvar la diferencia. Nadie decidió que funcionara así: así fue quedando.
+      </p>
+
+      <p>
+        El resultado es un proceso que funciona, pero con un costo que nadie mide. Horas que se
+        van en mover datos de una pantalla a otra. Errores que aparecen tres pasos después de
+        donde se originaron. Y sobre todo, un conocimiento que vive en la cabeza de dos o tres
+        personas y no está escrito en ninguna parte.
+      </p>
+
+      <p class="nota">
+        La señal más clara de que un proceso necesita revisión no es que falle. Es que <strong>solo
+        una persona sepa hacerlo</strong>, y que cuando esa persona se va de vacaciones, el área
+        se detiene.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14 reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mt-2 mb-4">Cuatro etapas,<br />en este orden</h2>
+      <p class="t-muted2 font-body max-w-2xl">
+        El orden importa más que las etapas. Saltarse el levantamiento para llegar antes a la
+        tecnología es el error más caro y el más común.
+      </p>
+    </div>
+
+    <ol class="process-grid list-none" style="grid-template-columns:1fr">
+      <li class="process-step reveal" style="display:grid;gap:1rem;grid-template-columns:auto 1fr;align-items:start">
+        <span class="process-num" style="margin:0">01</span>
+        <div>
+          <h3 class="font-display font-semibold text-lg t-text mb-2">Levantamiento: cómo funciona hoy</h3>
+          <p class="text-sm t-muted2 font-body leading-relaxed">
+            Documentamos el proceso real, no el que dice el manual. Eso significa sentarse con
+            quien lo ejecuta y registrar también los pasos informales: la planilla que alguien
+            mantiene aparte, el correo que hay que mandar antes de que el sistema deje avanzar,
+            la regla que se aplica de memoria. Ahí suele estar la mayor parte del trabajo oculto.
+          </p>
+        </div>
+      </li>
+      <li class="process-step reveal" style="display:grid;gap:1rem;grid-template-columns:auto 1fr;align-items:start;transition-delay:.08s">
+        <span class="process-num" style="margin:0">02</span>
+        <div>
+          <h3 class="font-display font-semibold text-lg t-text mb-2">Análisis: dónde se pierde</h3>
+          <p class="text-sm t-muted2 font-body leading-relaxed">
+            Con el proceso a la vista, medimos. Cuánto demora cada etapa, dónde se acumula la
+            espera, qué pasos existen solo para corregir errores de pasos anteriores, cuáles se
+            podrían eliminar sin que nadie los extrañe. No todo lo que consume tiempo es
+            ineficiencia: parte es control necesario, y distinguirlos es el trabajo.
+          </p>
+        </div>
+      </li>
+      <li class="process-step reveal" style="display:grid;gap:1rem;grid-template-columns:auto 1fr;align-items:start;transition-delay:.16s">
+        <span class="process-num" style="margin:0">03</span>
+        <div>
+          <h3 class="font-display font-semibold text-lg t-text mb-2">Propuesta: qué cambiar y en qué orden</h3>
+          <p class="text-sm t-muted2 font-body leading-relaxed">
+            Un rediseño priorizado por impacto y por esfuerzo. Algunas cosas se arreglan
+            eliminando un paso; otras requieren integrar dos sistemas; otras conviene dejarlas
+            como están. El entregable incluye qué <em>no</em> hacer, que suele ser la parte más
+            valiosa y la que nadie escribe.
+          </p>
+        </div>
+      </li>
+      <li class="process-step reveal" style="display:grid;gap:1rem;grid-template-columns:auto 1fr;align-items:start;transition-delay:.24s">
+        <span class="process-num" style="margin:0">04</span>
+        <div>
+          <h3 class="font-display font-semibold text-lg t-text mb-2">Implementación y medición</h3>
+          <p class="text-sm t-muted2 font-body leading-relaxed">
+            Recién acá entra la tecnología: automatizaciones, integraciones, IA donde aporte.
+            Y se mide contra la línea base que levantamos al principio. Sin ese número previo no
+            hay forma de saber si el proyecto funcionó, y es la razón por la que tantas
+            iniciativas de mejora terminan defendiéndose con impresiones en vez de datos.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 reveal">
+      <span class="eyebrow">Cuándo conviene</span>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mt-2 mb-4">Señales de que un proceso<br />está pidiendo revisión</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="service-card rounded-xl p-7 reveal">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Los datos se copian a mano</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">Alguien saca información de un sistema para meterla en otro. Cada traspaso manual es tiempo y es una oportunidad de error.</p>
+      </article>
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.06s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Nadie sabe en qué va</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">Para saber el estado de algo hay que preguntarle a una persona. Si el proceso no responde solo, no está instrumentado.</p>
+      </article>
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.12s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">El cierre de mes es una crisis</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">Si cada cierre exige horas extra y revisiones de emergencia, el problema no es el cierre: es lo que se acumuló durante el mes.</p>
+      </article>
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.18s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Hay una planilla paralela</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">Cuando existe un Excel que alguien mantiene al margen del sistema oficial, es porque el sistema no cubre algo real. Esa planilla es un diagnóstico.</p>
+      </article>
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.24s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Las mismas correcciones, siempre</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">Si cada ciclo se corrigen los mismos errores, no es descuido de las personas: el proceso los está produciendo.</p>
+      </article>
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.3s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Depende de una persona</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">El proceso funciona porque alguien sabe hacerlo, no porque esté definido. Es el riesgo operacional más común y el menos atendido.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="demo-cta reveal">
+      <div>
+        <span class="eyebrow">Un caso real</span>
+        <h2 class="font-display font-bold text-xl md:text-2xl t-text mt-2 mb-3">De 30 días a 5, en una clasificadora de riesgo</h2>
+        <p class="t-muted2 font-body leading-relaxed max-w-2xl">
+          El análisis financiero de Humphreys era 100% manual: descargar documentos, transcribir
+          cifras, normalizarlas y recién entonces analizar. Treinta días de ciclo, con errores que
+          se arrastraban desde la transcripción. Automatizamos la cadena completa respetando los
+          criterios de análisis que el equipo ya tenía. El proceso quedó en cinco días, con 90%
+          menos errores.
+        </p>
+      </div>
+      <a href="/casos/humphreys/" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded shrink-0">Ver el caso →</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="prosa reveal">
+      <span class="eyebrow">Transformación digital</span>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mb-6" style="margin-top:.5rem">Por dónde se empieza</h2>
+      <p>
+        "Transformación digital" se usa para describir el destino, pero rara vez el camino. Y el
+        camino casi siempre parte acá: entender cómo funcionan hoy los procesos antes de
+        digitalizarlos.
+      </p>
+      <p>
+        El orden inverso es lo que produce proyectos caros que no mejoran nada. Un proceso que
+        nadie revisó, llevado tal cual a una plataforma nueva, se convierte en una versión
+        electrónica del mismo desorden: los mismos pasos innecesarios, las mismas esperas, ahora
+        con una licencia mensual.
+      </p>
+      <p>
+        Por eso tratamos la optimización de procesos y la transformación digital como un solo
+        trabajo con dos tiempos. Primero se entiende y se rediseña; después se incorpora
+        tecnología donde efectivamente aporta —automatización, integración, IA— y se mide si
+        movió el indicador que importaba.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="font-display font-bold text-2xl t-text mb-8 reveal">Relacionado</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <a href="/servicios/inteligencia-artificial/" class="service-card rounded-xl p-6 reveal">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Inteligencia Artificial</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed mb-3">Cuando el rediseño señala trabajo repetitivo que consume horas sin aportar criterio.</p>
+        <p class="text-xs t-accent font-body">Ver el servicio →</p>
+      </a>
+      <a href="/servicios/tecnologia-y-sistemas/" class="service-card rounded-xl p-6 reveal" style="transition-delay:.08s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Tecnología &amp; Sistemas</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed mb-3">Cuando el problema está entre los sistemas y no dentro de ellos.</p>
+        <p class="text-xs t-accent font-body">Ver el servicio →</p>
+      </a>
+      <a href="/gemelos-digitales/" class="service-card rounded-xl p-6 reveal" style="transition-delay:.16s">
+        <h3 class="font-display font-semibold text-base t-text mb-2">Gemelos digitales</h3>
+        <p class="text-sm t-muted2 font-body leading-relaxed mb-3">Cuando el proceso tiene espacio físico y conviene probar los cambios antes de ejecutarlos.</p>
+        <p class="text-xs t-accent font-body">Ver el servicio →</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="cta-block text-center py-14 px-6 rounded-xl reveal">
+      <p class="t-muted2 text-sm font-body mb-2">¿Hay un proceso que te está costando más de lo que debería?</p>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mb-6">Conversemos sin compromiso</h2>
+      <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">Escríbenos →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="py-12 sec-bg footer-top">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="text-center md:text-left">
+        <a href="/" aria-label="Oopart — inicio">
+          <img src="/assets/logo-full-white.png" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" />
+          <img src="/assets/logo-full-blue.png" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" />
+        </a>
+        <p class="text-xs t-muted font-body mt-3">Out of Place Artefact — Tecnología que transforma.</p>
+      </div>
+      <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Pie de página">
+        <a href="/#servicios" class="nav-link text-xs font-body">Servicios</a>
+        <a href="/#proceso" class="nav-link text-xs font-body">Proceso</a>
+        <a href="/#resultados" class="nav-link text-xs font-body">Resultados</a>
+        <a href="/#contacto" class="nav-link text-xs font-body">Contacto</a>
+        <a href="/privacidad/" class="nav-link text-xs font-body">Privacidad</a>
+        <a href="https://www.linkedin.com/company/22304283/" class="nav-link text-xs font-body" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </nav>
+      <p class="text-xs t-muted font-body">© <span id="year">2026</span> Oopart. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+
+</body>
+</html>
