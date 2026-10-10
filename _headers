@@ -1,12 +1,17 @@
 # Cabeceras de Cloudflare Workers Static Assets.
 #
-# Por defecto todo se servia con max-age=0, must-revalidate: el navegador
-# volvia a preguntar por cada archivo en cada visita aunque nada hubiera
-# cambiado. Aca distinguimos lo que puede cachearse de lo que no.
+# OJO: Cloudflare ACUMULA todas las reglas cuyo patron coincide, no gana la
+# mas especifica. Una regla /* al final le pegaba "max-age=0, must-revalidate"
+# a todo y dejaba cabeceras con dos max-age contradictorios, que el navegador
+# resuelve quedandose con el primero. Por eso aca ningun patron se solapa.
+#
+# El HTML no necesita regla: Cloudflare ya lo sirve con max-age=0,
+# must-revalidate, que es justo lo que queremos (es lo que cambia al publicar
+# y lo que apunta a las versiones nuevas de todo lo demas).
 
 # CSS y JS llevan ?v=<hash> del contenido (scripts/version-assets.mjs): si
-# cambian, cambia la URL. Por eso la copia guardada nunca queda obsoleta y
-# podemos decirle al navegador que no vuelva a preguntar nunca.
+# cambian, cambia la URL, asi que la copia guardada nunca queda obsoleta y el
+# navegador no tiene por que volver a preguntar.
 /styles.css
   Cache-Control: public, max-age=31536000, immutable
 /app.js
@@ -16,18 +21,8 @@
 /analytics.js
   Cache-Control: public, max-age=31536000, immutable
 
-# Fuentes: el archivo que corresponde a cada familia no cambia; si cambiara,
-# scripts/fuentes.mjs escribiria otro nombre.
-/assets/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
-
-# Logos, iconos e imagenes para redes: no llevan hash, asi que reemplazar uno
-# sin renombrarlo dejaria a los visitantes con la version vieja. Un mes evita
-# revalidar en cada visita sin atarnos un ano.
+# Fuentes, logos, iconos e imagenes para redes. No llevan hash, asi que
+# reemplazar uno sin renombrarlo dejaria a los visitantes con la version
+# vieja: un mes evita revalidar en cada visita sin atarnos un ano.
 /assets/*
   Cache-Control: public, max-age=2592000
-
-# El HTML se revalida siempre: es lo que cambia cuando publicamos y lo que
-# apunta a las versiones nuevas de todo lo anterior.
-/*
-  Cache-Control: public, max-age=0, must-revalidate
