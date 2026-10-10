@@ -4,7 +4,8 @@
   "description": "Sitio oopart.cl — una sola pagina estatica, desplegada en Cloudflare Workers.",
   "scripts": {
     "build": "node scripts/build-casos.mjs && node scripts/build-servicios.mjs && npx tailwindcss -i src/input.css -o styles.css --minify && node scripts/version-assets.mjs",
-    "watch": "npx tailwindcss -i src/input.css -o styles.css --watch"
+    "watch": "npx tailwindcss -i src/input.css -o styles.css --watch",
+    "material": "node scripts/material-linkedin.mjs > marketing/material.md"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"

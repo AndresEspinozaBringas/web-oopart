@@ -2,6 +2,7 @@
 src/
 scripts/
 worker/
+marketing/
 brand/
 node_modules/
 .claude/
