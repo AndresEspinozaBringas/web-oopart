@@ -11,6 +11,8 @@
  * Secreto (en el panel de Cloudflare): RESEND_API_KEY
  */
 
+import { correoInterno, correoVisitante } from './plantillas.js';
+
 const ORIGENES = ['https://oopart.cl', 'https://www.oopart.cl'];
 const LIMITE_CUERPO = 50 * 1024;       // 50 KB: un formulario de texto nunca pesa mas
 const LIMITE_CAMPO = 5000;
@@ -32,7 +34,7 @@ export default {
       if (request.method !== 'POST') {
         return json({ ok: false, error: 'METODO_NO_PERMITIDO' }, 405, request);
       }
-      return contacto(request, env);
+      return contacto(request, env, ctx);
     }
 
     return env.ASSETS.fetch(request);
@@ -74,11 +76,7 @@ function limpiar(v, max = LIMITE_CAMPO) {
   return String(v ?? '').replace(/\s+/g, ' ').trim().slice(0, max);
 }
 
-function escapar(s) {
-  return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-}
-
-async function contacto(request, env) {
+async function contacto(request, env, ctx) {
   if (!origenPermitido(request)) {
     return json({ ok: false, error: 'ORIGEN_NO_PERMITIDO' }, 403, request);
   }
@@ -132,59 +130,50 @@ async function contacto(request, env) {
   const ip = request.headers.get('CF-Connecting-IP') || '';
   const pais = request.cf?.country || '';
 
-  const cuerpoHtml = `
-    <div style="font-family:system-ui,-apple-system,sans-serif;max-width:620px;line-height:1.6;color:#0D1526">
-      <p style="margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5A6880">
-        Nuevo contacto desde oopart.cl
-      </p>
-      <h2 style="margin:0 0 20px;font-size:20px">${escapar(nombre)}</h2>
-      <table style="border-collapse:collapse;width:100%;font-size:14px">
-        <tr><td style="padding:6px 12px 6px 0;color:#5A6880;width:110px">Email</td>
-            <td style="padding:6px 0"><a href="mailto:${escapar(email)}">${escapar(email)}</a></td></tr>
-        <tr><td style="padding:6px 12px 6px 0;color:#5A6880">Empresa</td>
-            <td style="padding:6px 0">${escapar(empresa) || '—'}</td></tr>
-        <tr><td style="padding:6px 12px 6px 0;color:#5A6880">Desafío</td>
-            <td style="padding:6px 0">${escapar(etiquetaDesafio)}</td></tr>
-      </table>
-      <div style="margin:20px 0;padding:16px;background:#F4F7FB;border-left:3px solid #30428A;border-radius:4px">
-        <p style="margin:0;white-space:pre-wrap">${escapar(mensaje)}</p>
-      </div>
-      <p style="margin:0;font-size:12px;color:#8A96AB">
-        Responde a este correo para contestarle directamente.${pais ? ` · Origen: ${escapar(pais)}` : ''}${ip ? ` · IP: ${escapar(ip)}` : ''}
-      </p>
-    </div>`;
+  const interno = correoInterno({
+    nombre, email, empresa, desafio: etiquetaDesafio, mensaje, pais, ip,
+  });
 
-  const cuerpoTexto =
-    `Nuevo contacto desde oopart.cl\n\n` +
-    `Nombre:  ${nombre}\nEmail:   ${email}\nEmpresa: ${empresa || '—'}\nDesafío: ${etiquetaDesafio}\n\n` +
-    `${mensaje}\n`;
-
-  try {
+  async function enviar(cuerpo) {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        from: env.MAIL_FROM,
-        to: [env.MAIL_TO],
-        reply_to: email,             // responder va directo al visitante
-        subject: `Contacto web: ${nombre}${empresa ? ` · ${empresa}` : ''}`,
-        html: cuerpoHtml,
-        text: cuerpoTexto,
-      }),
+      body: JSON.stringify(cuerpo),
     });
+    if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
+  }
 
-    if (!res.ok) {
-      const detalle = await res.text();
-      console.error('Resend rechazo el envio:', res.status, detalle);
-      return json({ ok: false, error: 'ENVIO_FALLIDO' }, 502, request);
-    }
+  // 1. El aviso a Oopart es lo critico: si falla, el contacto se perdio.
+  try {
+    await enviar({
+      from: env.MAIL_FROM,
+      to: [env.MAIL_TO],
+      reply_to: email,             // responder va directo al visitante
+      subject: `Contacto web: ${nombre}${empresa ? ` · ${empresa}` : ''}`,
+      html: interno.html,
+      text: interno.texto,
+    });
   } catch (e) {
-    console.error('Error llamando a Resend:', e);
+    console.error('No se pudo avisar a Oopart:', e);
     return json({ ok: false, error: 'ENVIO_FALLIDO' }, 502, request);
   }
+
+  // 2. La respuesta automatica es un extra: si rebota (correo mal escrito o
+  //    inexistente) no debe afectar al visitante, que ya fue atendido.
+  const visitante = correoVisitante({ nombre, desafio: etiquetaDesafio });
+  const acuse = enviar({
+    from: env.MAIL_FROM,
+    to: [email],
+    reply_to: env.MAIL_TO,
+    subject: 'Recibimos tu mensaje — Oopart',
+    html: visitante.html,
+    text: visitante.texto,
+  }).catch((e) => console.error('No se pudo enviar el acuse al visitante:', e));
+
+  if (ctx && typeof ctx.waitUntil === 'function') ctx.waitUntil(acuse);
 
   // Envio nativo del navegador (sin fetch): redirigir, no mostrar JSON crudo
   if ((request.headers.get('Accept') || '').includes('text/html')) {
