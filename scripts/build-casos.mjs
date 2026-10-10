@@ -132,6 +132,7 @@ for (const c of casos) {
     "headline": ${JSON.stringify(c.titulo + ' — ' + c.cliente)},
     "description": ${JSON.stringify(c.descripcion)},
     "about": ${JSON.stringify(c.industria)},
+    "image": "https://oopart.cl/assets/og-image.png",
     "author": { "@type": "Organization", "name": "Oopart", "url": "https://oopart.cl/" },
     "publisher": { "@type": "Organization", "name": "Oopart", "logo": { "@type": "ImageObject", "url": "https://oopart.cl/assets/icon-512.png" } },
     "mainEntityOfPage": ${JSON.stringify(url)}
