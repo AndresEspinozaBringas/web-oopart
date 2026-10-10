@@ -46,6 +46,27 @@ de consentimiento por defecto (todo denegado) y monta el banner. Sin
 aceptación, GA4 se carga pero no escribe cookies. La decisión se guarda 12
 meses y se puede revisar desde `/privacidad/`.
 
+## El formulario de contacto
+
+`POST /api/contacto` lo atiende `worker/index.js` y envía por Resend. Avisa a
+Oopart y manda un acuse de recibo al visitante; las plantillas están en
+`worker/plantillas.js`.
+
+Necesita el secreto `RESEND_API_KEY`:
+
+```bash
+npx wrangler secret put RESEND_API_KEY
+```
+
+**Cárgalo siempre como Secret, nunca como variable de texto.** `wrangler deploy`
+sincroniza el bloque `vars` de `wrangler.jsonc`: lo que no está en el archivo
+se borra. Una variable de texto cargada a mano desaparece en el siguiente
+despliegue y el formulario deja de enviar sin ningún error visible —responde
+`SERVICIO_NO_CONFIGURADO`. Los secrets no se tocan.
+
+Si Resend no tiene la key, el endpoint responde `SERVICIO_NO_CONFIGURADO` y el
+formulario muestra la dirección de contacto como alternativa.
+
 ## Agregar o editar un caso de éxito
 
 Las páginas de `casos/` se generan: edita `scripts/casos.json` y corre
