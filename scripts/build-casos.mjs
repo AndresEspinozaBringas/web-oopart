@@ -168,11 +168,11 @@ ${nav()}
       <span class="tag reveal-ya">${esc(c.industria)}</span>
       <p class="text-sm t-muted font-body mb-3 mt-2 reveal-ya">${c.clienteUrl ? `<a href="${c.clienteUrl}" target="_blank" rel="noopener" class="link-accent">${esc(c.cliente)} ↗</a>` : esc(c.cliente)}</p>
 
-      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal-ya" style="animation-delay:.1s">${esc(c.titulo)}</h1>
+      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal-ya" style="animation-delay:.05s">${esc(c.titulo)}</h1>
 
-      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.2s">${esc(c.resumen)}</p>
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.1s">${esc(c.resumen)}</p>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl reveal-ya" style="animation-delay:.3s">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl reveal-ya" style="animation-delay:.15s">
         ${c.metricas.map((m) => `<div class="metric"><p class="metric-v">${esc(m.v)}</p><p class="metric-l">${esc(m.l)}</p></div>`).join('\n        ')}
       </div>
     </div>

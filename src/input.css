@@ -198,8 +198,13 @@ h2.font-display + p, h3.font-display + p { margin-top: .25rem; }
    es que el texto aparezca 24 px mas abajo, legible desde el primer momento.
    De paso mejora el LCP: un elemento con opacidad 1 cuenta como pintado al
    instante. Es el mismo problema que ya nos dio requestAnimationFrame en
-   consent.js. */
-.reveal-ya { animation: aparecer .7s ease both; }
+   consent.js.
+
+   La duracion es corta a proposito. Chrome sigue reevaluando cual es el
+   elemento LCP mientras uno se mueve, asi que una entrada larga lo retrasa:
+   con .7s la mediana de cinco corridas daba 2,6 s de LCP y sin animacion
+   2,4 s. Acortarla conserva el efecto y deja el LCP bajo el umbral. */
+.reveal-ya { animation: aparecer .35s ease both; }
 @keyframes aparecer {
   from { transform: translateY(24px); }
   to   { transform: none; }

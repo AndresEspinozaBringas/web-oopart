@@ -10,6 +10,9 @@ import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const IGNORAR = new Set(['node_modules', 'src', 'brand', 'assets', 'scripts', '.git', '.claude', '.wrangler']);
+// Informes de Lighthouse generados con --view: son HTML pero no son paginas
+// del sitio, y sin esto el script aborta porque no encuentra styles.css.
+const IGNORAR_ARCHIVO = /\.report\.html$/;
 
 // styles.css es obligatorio en toda pagina; los JS no (gracias/ no los necesita
 // todos), asi que solo exigimos que cada uno aparezca en alguna parte.
@@ -27,7 +30,7 @@ function buscarPaginas(dir = '.') {
     const ruta = dir === '.' ? e.name : join(dir, e.name);
     if (e.isDirectory()) {
       if (!IGNORAR.has(e.name)) salida.push(...buscarPaginas(ruta));
-    } else if (e.name.endsWith('.html')) {
+    } else if (e.name.endsWith('.html') && !IGNORAR_ARCHIVO.test(e.name)) {
       salida.push(ruta);
     }
   }

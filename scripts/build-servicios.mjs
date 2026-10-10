@@ -59,8 +59,8 @@ ${nav}
     </nav>
     <div class="max-w-3xl mt-6">
       <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal-ya">${esc(s.nombre)}</h1>
-      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.15s">${esc(s.resumen)}</p>
-      <div class="flex flex-col sm:flex-row gap-4 reveal-ya" style="animation-delay:.25s">
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.08s">${esc(s.resumen)}</p>
+      <div class="flex flex-col sm:flex-row gap-4 reveal-ya" style="animation-delay:.12s">
         <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">Conversemos sobre tu caso</a>
         <a href="/casos/${esc(caso.slug)}/" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded">Ver un caso real</a>
       </div>

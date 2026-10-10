@@ -11,3 +11,4 @@ package-lock.json
 tailwind.config.js
 wrangler.jsonc
 README.md
+*.report.html
