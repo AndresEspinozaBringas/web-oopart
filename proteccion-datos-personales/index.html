@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ley de protección de datos personales: qué cambia en tus sistemas — Oopart</title>
+  <meta name="description" content="La Ley 21.719 exige evidencia operativa, no solo políticas escritas. Inventario de datos, registros de tratamiento, consentimiento y borrado: la implementación técnica en tus sistemas." />
+  <link rel="canonical" href="https://oopart.cl/proteccion-datos-personales/" />
+  <meta name="theme-color" content="#30428A" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://oopart.cl/proteccion-datos-personales/" />
+  <meta property="og:site_name" content="Oopart" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:title" content="Ley de protección de datos personales: la parte técnica" />
+  <meta property="og:description" content="Inventario de datos, registros de tratamiento, consentimiento y borrado. Lo que un abogado no implementa." />
+  <meta property="og:image" content="https://oopart.cl/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ley de protección de datos personales: la parte técnica" />
+  <meta name="twitter:description" content="Inventario de datos, registros de tratamiento, consentimiento y borrado. Lo que un abogado no implementa." />
+  <meta name="twitter:image" content="https://oopart.cl/assets/og-image.png" />
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/assets/icon-512.png" type="image/png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="/assets/icon-180.png" />
+
+  <script>
+    (function () {
+      var t = 'light';
+      try { t = localStorage.getItem('oopart-theme') || 'light'; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script>window.OOPART_GA_ID = 'G-1FGGRMWGPE';</script>
+  <script src="/consent.js"></script>
+  <script src="/analytics.js" defer></script>
+
+  <link rel="stylesheet" href="/styles.css?v=a41f7c5e" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Implementación técnica para protección de datos personales",
+    "description": "Inventario de datos personales, registros de tratamiento, mecanismos de consentimiento, borrado y portabilidad, y detección de brechas.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Oopart",
+      "url": "https://oopart.cl/"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Chile"
+    },
+    "url": "https://oopart.cl/proteccion-datos-personales/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://oopart.cl/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Protección de datos personales",
+        "item": "https://oopart.cl/proteccion-datos-personales/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuándo entra en vigencia la Ley 21.719?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La fecha vigente es el 1 de diciembre de 2026. En septiembre de 2026 el Gobierno ingresó un proyecto para postergarla al 1 de diciembre de 2027, en discusión en el Senado. La postergación no reduce las exigencias: solo mueve el calendario."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Aplica a empresas pequeñas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. La ley no distingue por tamaño. Cualquier organización que trate datos personales de trabajadores, clientes o proveedores queda sujeta a sus obligaciones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Basta con tener una política de privacidad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. La fiscalización se apoya en evidencia operativa —registros, inventarios y trazas con fecha— más que en documentos declarativos. Una política que el sistema no puede respaldar con datos no demuestra cumplimiento."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center shrink-0" aria-label="Oopart — inicio">
+      <img src="/assets/logo-lockup-white.png" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
+      <img src="/assets/logo-lockup-blue.png" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="/#servicios" class="nav-link text-sm font-body">Servicios</a>
+      <a href="/#proceso" class="nav-link text-sm font-body">Proceso</a>
+      <a href="/#resultados" class="nav-link text-sm font-body">Resultados</a>
+      <a href="/#contacto" class="nav-link text-sm font-body">Contacto</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <button id="theme-btn" class="theme-toggle" aria-label="Cambiar a tema oscuro">
+        <svg class="icon-moon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <a href="/#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded">Conversemos →</a>
+    </div>
+    <div class="md:hidden flex items-center gap-2">
+      <button id="theme-btn-mobile" class="theme-toggle" aria-label="Cambiar a tema oscuro">
+        <svg class="icon-moon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button id="menu-btn" class="nav-link p-1" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden">
+    <div class="flex flex-col px-6 py-4 gap-4">
+      <a href="/#servicios" class="nav-link text-sm" data-close>Servicios</a>
+      <a href="/#proceso" class="nav-link text-sm" data-close>Proceso</a>
+      <a href="/#resultados" class="nav-link text-sm" data-close>Resultados</a>
+      <a href="/#contacto" class="nav-link text-sm" data-close>Contacto</a>
+      <a href="/#contacto" class="btn-accent inline-flex items-center gap-2 px-4 py-2 text-sm font-body font-medium rounded w-fit" data-close>Conversemos →</a>
+    </div>
+  </div>
+</nav>
+<main id="main">
+
+<section class="hero-grid relative flex items-center pt-16 overflow-hidden" style="min-height:auto">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 w-full">
+    <nav class="breadcrumb reveal" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>Protección de datos personales</span>
+    </nav>
+
+    <div class="max-w-3xl mt-6">
+      <div class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 reveal">
+        <span class="dot-pulse" aria-hidden="true"></span>
+        <span class="text-xs font-body tracking-wider t-accent">Ley 21.719</span>
+      </div>
+
+      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal" style="transition-delay:.1s">
+        <span class="line">Protección de datos personales:</span>
+        <span class="line gradient-text">qué cambia en tus sistemas</span>
+      </h1>
+
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal t-muted2" style="transition-delay:.2s">
+        La parte legal la resuelve un abogado. La parte que queda después —saber qué datos
+        tienes, dónde, quién los tocó y cómo borrarlos cuando alguien lo pida— es trabajo
+        de ingeniería sobre tus sistemas.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay:.3s">
+        <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">
+          Conversemos sobre tu caso
+        </a>
+        <a href="#que-exige" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded">
+          Ver qué exige la ley
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="prosa reveal">
+      <span class="eyebrow">El contexto</span>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mb-6" style="margin-top:.5rem">Una fecha que se mueve, exigencias que no</h2>
+
+      <p>
+        La Ley 21.719 reemplaza a la Ley 19.628, que regía desde 1999, y crea la Agencia de
+        Protección de Datos Personales. La fecha de entrada en vigencia vigente es el
+        <strong>1 de diciembre de 2026</strong>, pero en septiembre de 2026 el Gobierno ingresó
+        un proyecto para postergarla un año, y algunos senadores han propuesto plazos menores.
+        A la fecha de esta publicación, la discusión sigue abierta en el Senado.
+      </p>
+
+      <p class="nota">
+        Conviene separar dos cosas que suelen confundirse: <strong>la postergación mueve el
+        calendario, no reduce las exigencias</strong>. Quien use ese tiempo para prepararse llega
+        listo; quien lo tome como una prórroga enfrenta el mismo trabajo con menos margen.
+      </p>
+
+      <p>
+        Dos puntos que se pasan por alto. El primero: <strong>la ley no distingue por tamaño de
+        empresa</strong>. Si tratas datos de trabajadores, clientes o proveedores, quedas sujeto,
+        tengas cinco personas o quinientas. El segundo: las multas por infracciones gravísimas
+        llegan hasta <strong>20.000 UTM</strong>, del orden de $1.430 millones según valores de
+        junio de 2026.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section id="que-exige" class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 reveal">
+      <span class="eyebrow">Qué exige</span>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mt-2 mb-4">Evidencia operativa,<br />no solo documentos</h2>
+      <p class="t-muted2 font-body max-w-2xl">
+        La diferencia práctica con la ley anterior es qué cuenta como cumplimiento. Una política
+        de privacidad publicada es necesaria, pero no demuestra nada por sí sola: lo que se
+        revisa son registros, inventarios y trazas con fecha que el sistema pueda producir.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="service-card rounded-xl p-7 reveal">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Saber qué datos tienes</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">
+          Un inventario real de dónde viven los datos personales: qué sistema, qué campo, con qué
+          finalidad se recogieron y bajo qué base legal. En la mayoría de las empresas esta
+          respuesta no existe escrita en ninguna parte.
+        </p>
+      </article>
+
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.08s">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Registrar el tratamiento</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">
+          Quién accedió a qué dato, cuándo y para qué. Si tus sistemas no dejan esa traza hoy,
+          hay que instrumentarlos: es lo que convierte una afirmación en evidencia.
+        </p>
+      </article>
+
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.16s">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Consentimiento verificable</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">
+          No basta con pedirlo: hay que poder demostrar cuándo se dio, para qué finalidad y que
+          retirarlo es tan fácil como otorgarlo. Esto aplica a formularios, cookies y apps.
+        </p>
+      </article>
+
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.24s">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Borrar de verdad</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">
+          Los derechos ARCO se fortalecen y aparece la portabilidad. Eso significa poder eliminar
+          o exportar los datos de una persona, incluyendo los que quedaron en respaldos,
+          sistemas secundarios y planillas sueltas.
+        </p>
+      </article>
+
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.32s">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Detectar brechas a tiempo</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">
+          Las vulneraciones deben notificarse en plazos breves. Para cumplirlo no basta con
+          tener un protocolo: hay que poder <em>enterarse</em>, lo que exige monitoreo y alertas
+          sobre los sistemas que contienen datos personales.
+        </p>
+      </article>
+
+      <article class="service-card rounded-xl p-7 reveal" style="transition-delay:.4s">
+        <h3 class="font-display font-semibold text-lg t-text mb-3">Proveedores que también tratan</h3>
+        <p class="t-muted2 text-sm font-body leading-relaxed">
+          Tu responsabilidad no termina en tus servidores. Los servicios externos que procesan
+          datos por ti —correo, CRM, nube, analítica— entran en el alcance, incluyendo las
+          transferencias fuera de Chile.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div class="prosa reveal">
+        <span class="eyebrow">Dónde entramos</span>
+        <h2 class="font-display font-bold text-2xl md:text-3xl t-text mb-6" style="margin-top:.5rem">No somos tu abogado</h2>
+        <p>
+          Y conviene decirlo de entrada. El análisis legal, las políticas, los contratos con
+          proveedores y la interpretación de la norma los hace un estudio jurídico, y hay buenos
+          trabajando en esto.
+        </p>
+        <p>
+          Lo que queda después de ese trabajo es un conjunto de requisitos que alguien tiene que
+          implementar en sistemas que ya están operando, sin detener la operación. Eso es
+          integración, instrumentación y automatización: exactamente lo que hacemos.
+        </p>
+        <p>
+          Si ya tienes asesoría legal, trabajamos con ella. Si no la tienes, es el primer paso
+          y lo razonable es partir por ahí.
+        </p>
+      </div>
+
+      <div class="reveal" style="transition-delay:.15s">
+        <ul class="feature-list">
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Levantamiento técnico</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">Recorremos los sistemas y construimos el inventario de datos personales con su flujo real, incluidos los traspasos manuales que nadie documentó.</p>
+          </li>
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Instrumentación</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">Dejamos los sistemas produciendo la evidencia que antes no generaban: registros de acceso, trazas de consentimiento, bitácoras con fecha.</p>
+          </li>
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Mecanismos de derechos</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">Flujos para responder solicitudes de acceso, rectificación, eliminación y portabilidad sin que cada una sea un proyecto manual.</p>
+          </li>
+          <li>
+            <h3 class="font-display font-semibold text-base t-text mb-1">Monitoreo y alertas</h3>
+            <p class="text-sm t-muted2 font-body leading-relaxed">Detección de accesos anómalos y fugas, para que una brecha se note cuando ocurre y no meses después.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="demo-cta reveal">
+      <div>
+        <span class="eyebrow">Un ejemplo que puedes revisar</span>
+        <h2 class="font-display font-bold text-xl md:text-2xl t-text mt-2 mb-3">Este mismo sitio</h2>
+        <p class="t-muted2 font-body leading-relaxed max-w-2xl">
+          oopart.cl pide consentimiento antes de activar cualquier cookie de medición, deja
+          constancia de la decisión, permite revertirla y no escribe nada si la respuesta es no.
+          Es una implementación chica, pero es verificable: puedes abrir las herramientas de
+          desarrollo y comprobar que sin aceptar no se crea ninguna cookie.
+        </p>
+      </div>
+      <a href="/privacidad/" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded shrink-0">
+        Ver cómo está resuelto →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 band">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-10 reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mt-2">Lo que más nos preguntan</h2>
+    </div>
+    <div class="prosa reveal">
+      <h2 style="font-size:1.125rem;margin-top:1.5rem">¿Tiene sentido empezar si la fecha puede moverse otra vez?</h2>
+      <p>
+        El trabajo no cambia con la fecha. Levantar el inventario de datos de una empresa mediana
+        toma semanas, y las modificaciones en sistemas que están en producción se hacen por
+        partes para no interrumpir la operación. Empezar cuando la fecha esté encima significa
+        hacerlo con prisa, que es cuando se cometen los errores caros.
+      </p>
+
+      <h2 style="font-size:1.125rem">Tenemos todo en planillas y correos. ¿Por dónde se parte?</h2>
+      <p>
+        Por el inventario. Es imposible proteger, borrar o acreditar datos que no sabes que
+        tienes, y los datos personales en planillas sueltas son justamente los que nadie registra.
+        Ese levantamiento suele ser también el momento en que aparece cuánta información
+        duplicada hay dando vueltas.
+      </p>
+
+      <h2 style="font-size:1.125rem">¿Basta con publicar una política de privacidad?</h2>
+      <p>
+        No. Una política describe lo que haces; la evidencia demuestra que lo haces. Si tu sitio
+        declara que respetas el consentimiento pero las cookies se escriben antes de que el
+        visitante acepte, el documento juega en tu contra, no a favor.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 sec-bg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="cta-block text-center py-14 px-6 rounded-xl reveal">
+      <p class="t-muted2 text-sm font-body mb-2">¿No sabes por dónde empezar?</p>
+      <h2 class="font-display font-bold text-2xl md:text-3xl t-text mb-6">Conversemos sobre tus sistemas</h2>
+      <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">Escríbenos →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="py-12 sec-bg footer-top">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="text-center md:text-left">
+        <a href="/" aria-label="Oopart — inicio">
+          <img src="/assets/logo-full-white.png" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" />
+          <img src="/assets/logo-full-blue.png" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" />
+        </a>
+        <p class="text-xs t-muted font-body mt-3">Out of Place Artefact — Tecnología que transforma.</p>
+      </div>
+      <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Pie de página">
+        <a href="/#servicios" class="nav-link text-xs font-body">Servicios</a>
+        <a href="/#proceso" class="nav-link text-xs font-body">Proceso</a>
+        <a href="/#resultados" class="nav-link text-xs font-body">Resultados</a>
+        <a href="/#contacto" class="nav-link text-xs font-body">Contacto</a>
+        <a href="/privacidad/" class="nav-link text-xs font-body">Privacidad</a>
+        <a href="https://www.linkedin.com/company/22304283/" class="nav-link text-xs font-body" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </nav>
+      <p class="text-xs t-muted font-body">© <span id="year">2026</span> Oopart. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+
+</body>
+</html>

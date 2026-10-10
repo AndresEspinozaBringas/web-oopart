@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "inteligencia-artificial",
+    "nombre": "Inteligencia Artificial",
+    "titleSeo": "Inteligencia Artificial aplicada a procesos de negocio — Oopart",
+    "descripcion": "Diseñamos e implementamos soluciones de IA que automatizan trabajo real: extracción de datos, clasificación de documentos y decisiones repetitivas. Consultoría en Chile.",
+    "resumen": "IA que se mide en horas liberadas y errores que dejan de ocurrir, no en demos que impresionan y nadie usa.",
+    "intro": [
+      "La mayoría de los proyectos de IA que fracasan no fracasan por la tecnología. Fracasan porque empezaron por la herramienta en vez de por el problema: alguien decidió «hay que hacer algo con IA» y después salió a buscar dónde aplicarla.",
+      "Nosotros partimos al revés. Primero identificamos qué trabajo consume horas de gente cara sin agregar criterio —transcribir, buscar, cotejar, clasificar— y recién ahí evaluamos si la IA es la respuesta. A veces lo es. A veces una automatización sin IA resuelve lo mismo a un décimo del costo, y lo decimos."
+    ],
+    "incluye": [
+      {
+        "titulo": "Diseño de soluciones IA",
+        "texto": "Evaluamos dónde la IA aporta valor real en tu operación, con qué datos cuentas hoy y cuáles faltan. El entregable es una decisión fundada sobre qué construir y qué no, antes de comprometer presupuesto."
+      },
+      {
+        "titulo": "Automatización de procesos con IA",
+        "texto": "Implementación sobre el proceso real: extracción de datos desde documentos, clasificación, validación contra reglas de negocio y generación automática de salidas. Integrado a los sistemas que ya usas, no como una isla aparte."
+      }
+    ],
+    "comoLoHacemos": "Partimos por el indicador que debe moverse. Si el objetivo es reducir el tiempo de un proceso, medimos ese tiempo antes de tocar nada; sin línea base no hay forma de saber si el proyecto funcionó. Después construimos sobre un período real conocido y contrastamos los resultados contra lo que hacía el equipo a mano.",
+    "caso": {
+      "slug": "humphreys",
+      "titular": "En Humphreys, automatizar la extracción, limpieza y consolidación de datos bajó un proceso de 30 días a 5, con 90% menos errores.",
+      "texto": "Ver el caso completo"
+    },
+    "tecnologias": ["Python", "Azure", "Google Cloud", "n8n", "Power Automate"]
+  },
+  {
+    "slug": "tecnologia-y-sistemas",
+    "nombre": "Tecnología & Sistemas",
+    "titleSeo": "Integración de sistemas y gestión de infraestructura — Oopart",
+    "descripcion": "Conectamos ERP, sistemas de bodega, plataformas de venta y servicios en la nube para que operen como uno solo. Integración de sistemas y gestión de infraestructura en Chile.",
+    "resumen": "Cuando cada sistema funciona bien por separado pero el traspaso entre ellos es manual, el problema no está en los sistemas: está entre ellos.",
+    "intro": [
+      "Casi ninguna empresa tiene un problema de software. Tiene un problema de costuras: el ERP no habla con la bodega, la venta se registra en un lado y la facturación en otro, y alguien dedica media jornada a copiar datos de una pantalla a otra.",
+      "Ese trabajo manual no solo cuesta horas. Es donde aparecen los errores que después hay que perseguir, y donde se rompe la trazabilidad justo cuando alguien la pide."
+    ],
+    "incluye": [
+      {
+        "titulo": "Integración de sistemas",
+        "texto": "Conectamos las plataformas que ya tienes para que los datos fluyan sin intervención humana. Incluye el diseño del flujo, el manejo de errores —qué pasa cuando un sistema no responde— y la trazabilidad de cada operación."
+      },
+      {
+        "titulo": "Gestión de infraestructura",
+        "texto": "Administramos el ecosistema sobre el que corre tu operación: disponibilidad, seguridad, respaldos y capacidad para crecer. El objetivo es que la infraestructura deje de ser un tema del que tengas que preocuparte."
+      }
+    ],
+    "comoLoHacemos": "Antes de conectar nada, mapeamos cómo se mueve hoy la información, incluyendo los pasos manuales que no están documentados en ninguna parte. Esos pasos suelen contener reglas de negocio reales que alguien aplica de memoria, y perderlas en la automatización es la forma más común de romper una operación que funcionaba.",
+    "caso": {
+      "slug": "isapre-fundacion",
+      "titular": "En Isapre Fundación, integrar el front office con el back office eliminó el traspaso manual de expedientes: 85% menos errores documentales y el cierre de venta pasó de 3 días a 30 minutos.",
+      "texto": "Ver el caso completo"
+    },
+    "tecnologias": ["Azure", "Google Cloud", "Node.js", "Python", "SharePoint", "n8n"]
+  },
+  {
+    "slug": "productos-y-estrategia",
+    "nombre": "Productos & Estrategia",
+    "titleSeo": "Desarrollo de productos digitales y assessment tecnológico — Oopart",
+    "descripcion": "Construimos plataformas web y apps móviles, y evaluamos la madurez tecnológica de tu empresa para entregarte una hoja de ruta accionable. Chile.",
+    "resumen": "Construir el producto correcto importa más que construirlo rápido. Y a veces el entregable más valioso es saber qué no hay que construir todavía.",
+    "intro": [
+      "Hay dos momentos en que una empresa nos busca acá. Uno es cuando tiene claro qué necesita construir y quiere un equipo que lo haga bien. El otro es cuando sabe que algo no está funcionando pero no tiene claro dónde está el problema ni por dónde partir.",
+      "Son trabajos distintos. El primero es desarrollo. El segundo es diagnóstico, y hacerlo antes evita construir una solución cara para el problema equivocado."
+    ],
+    "incluye": [
+      {
+        "titulo": "Desarrollo web y mobile",
+        "texto": "Plataformas y aplicaciones construidas sobre el flujo real de trabajo de quien las va a usar. Incluye la integración con los sistemas existentes, porque un producto que no conversa con el resto de la operación termina generando el trabajo manual que venía a eliminar."
+      },
+      {
+        "titulo": "Assessment tecnológico",
+        "texto": "Evaluación de la madurez tecnológica de la empresa: qué sistemas hay, cómo se conectan, dónde están los riesgos y qué conviene abordar primero. El entregable es una hoja de ruta priorizada por impacto, no un inventario."
+      }
+    ],
+    "comoLoHacemos": "En desarrollo, trabajamos sobre entregas que se puedan usar y medir, no sobre un gran lanzamiento al final. En assessment, el criterio de priorización es el impacto en el negocio: un sistema viejo que funciona y nadie toca puede ser menos urgente que una integración frágil que falla todos los meses.",
+    "caso": {
+      "slug": "buildtrack",
+      "titular": "Para Grupo S3L construimos BuildTrack, una plataforma de gestión de obras diseñada sobre la normativa chilena. Hoy opera con más de 30 obras activas.",
+      "texto": "Ver el caso completo"
+    },
+    "tecnologias": ["React", "Node.js", "Azure", "Google Cloud", "Python"]
+  }
+]

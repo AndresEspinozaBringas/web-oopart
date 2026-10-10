@@ -20,8 +20,12 @@ sirve el repositorio como archivos estáticos. Un push a `master` publica.
 | `index.html` | Portada |
 | `gemelos-digitales/index.html` | Página del servicio de gemelos digitales |
 | `casos/<slug>/index.html` | **Generadas.** No editar a mano |
+| `servicios/<slug>/index.html` | **Generadas.** No editar a mano |
+| `proteccion-datos-personales/` | Página escrita a mano |
 | `scripts/casos.json` | Contenido de los casos: edita aquí |
-| `scripts/build-casos.mjs` | Genera las páginas de caso desde el JSON |
+| `scripts/servicios.json` | Contenido de los servicios: edita aquí |
+| `scripts/build-*.mjs` | Generadores |
+| `scripts/comun.mjs` | Cabecera, navegación y pie compartidos |
 | `app.js` | JS compartido por todas las páginas |
 | `analytics.js` | Carga GA4 **solo** si hay un ID configurado |
 | `consent.js` | Consent Mode v2 y banner de cookies. Va **antes** de analytics.js |
