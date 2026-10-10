@@ -40,7 +40,22 @@
     } catch (e) {}
   }
 
+  var clarityCargado = false;
+  function cargarClarity() {
+    var id = window.OOPART_CLARITY_ID;
+    if (clarityCargado || !id || !/^[a-z0-9]+$/.test(id)) return;
+    clarityCargado = true;
+    // Microsoft Clarity: mapas de calor y grabacion de sesiones.
+    // Solo se carga si la persona acepto; sin aceptacion no se inyecta nada.
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', id);
+  }
+
   function aplicar(acepta) {
+    if (acepta) cargarClarity();
     gtag('consent', 'update', {
       analytics_storage: acepta ? 'granted' : 'denied',
       ad_storage: 'denied',

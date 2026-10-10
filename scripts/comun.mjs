@@ -1,5 +1,6 @@
 // Cabecera, navegacion y pie compartidos por las paginas generadas.
 export const GA = 'G-1FGGRMWGPE';
+export const CLARITY = '';   // pegar aqui el ID de Microsoft Clarity
 export const LINKEDIN = 'https://www.linkedin.com/company/22304283/';
 
 export const esc = (s) =>
@@ -49,6 +50,7 @@ export function cabecera({ titulo, descripcion, url, ogTitulo, ogDesc, jsonLd = 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <script>window.OOPART_GA_ID = '${GA}';</script>
+  <script>window.OOPART_CLARITY_ID = '${CLARITY}';</script>
   <script src="/consent.js"></script>
   <script src="/analytics.js" defer></script>
 
