@@ -609,7 +609,11 @@
       </div>
 
       <div class="reveal" style="transition-delay:0.15s">
-        <form action="/api/contacto" method="POST" id="contact-form" class="flex flex-col gap-4">
+        <!-- data-clarity-mask: Clarity no debe capturar lo que se escribe acá.
+             Lo declaramos en /privacidad/, así que no lo dejamos a la
+             heurística del modo Equilibrado. -->
+        <form action="/api/contacto" method="POST" id="contact-form"
+              class="flex flex-col gap-4" data-clarity-mask="true">
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="flex flex-col gap-1.5">
