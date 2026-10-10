@@ -85,7 +85,11 @@
         "l": "Ahorro operativo"
       }
     ],
-    "cierre": "La adopción es el indicador que manda en telemedicina: un dispositivo que el paciente no usa no mide nada. El 43% explica buena parte de los otros tres números."
+    "cierre": "La adopción es el indicador que manda en telemedicina: un dispositivo que el paciente no usa no mide nada. El 43% explica buena parte de los otros tres números.",
+    "industriaPagina": {
+      "url": "/salud/",
+      "nombre": "salud privada"
+    }
   },
   {
     "slug": "isapre-fundacion",
@@ -129,7 +133,11 @@
         "l": "Custodia digital"
       }
     ],
-    "cierre": "Pasar de 3 días a 30 minutos cambia el momento de la venta: el plan se cierra mientras el cliente todavía está decidido."
+    "cierre": "Pasar de 3 días a 30 minutos cambia el momento de la venta: el plan se cierra mientras el cliente todavía está decidido.",
+    "industriaPagina": {
+      "url": "/salud/",
+      "nombre": "salud privada"
+    }
   },
   {
     "slug": "buildtrack",
