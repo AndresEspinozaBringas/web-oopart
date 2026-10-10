@@ -471,3 +471,7 @@ select option { background: var(--c-surface); color: var(--c-text); }
   border-left: 2px solid var(--c-brand-bd); padding: .25rem 0 .25rem 1.25rem;
   margin: 1.5rem 0; font-size: .875rem;
 }
+
+/* ── CIFRAS CLICABLES ── */
+.stat-link { display: block; border-radius: .5rem; padding: .5rem; transition: background .2s, transform .2s; }
+.stat-link:hover { background: var(--c-brand-bg); transform: translateY(-2px); }
