@@ -1,3 +1,8 @@
+/* Las fuentes van primero: @import debe preceder a cualquier otra regla.
+   Se compilan dentro de styles.css, asi el navegador no gasta una peticion
+   extra solo para enterarse de que fuentes necesita. */
+@import './fuentes.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -177,6 +182,28 @@ h2.font-display + p, h3.font-display + p { margin-top: .25rem; }
 /* ── REVEAL (solo si hay JS: sin JS el contenido queda visible) ── */
 .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .js .reveal.visible { opacity: 1; transform: none; }
+
+/* El contenido del hero usa .reveal-ya y se anima con CSS puro, sin esperar a
+   app.js. Mientras un elemento esta en opacity 0 Chrome no lo cuenta como
+   pintado: medimos un LCP de 5,4 s del que 4,9 eran esperar a que el
+   IntersectionObserver marcara el parrafo del hero. Una animacion CSS arranca
+   en el primer frame, antes de que el JavaScript siquiera se descargue.
+   Sin la clase .js tampoco: esto debe correr aunque JavaScript falle.
+
+   Animamos solo transform, nunca opacity: Chrome congela las animaciones CSS
+   en pestanas de fondo (lo comprobamos: currentTime 0 tras 36 s con
+   document.hidden). Con opacity el hero quedaria invisible para quien abre el
+   sitio en una pestana nueva con Ctrl+clic, y Googlebot podria renderizarlo
+   igual. Animando solo la posicion, lo peor que pasa si la animacion no corre
+   es que el texto aparezca 24 px mas abajo, legible desde el primer momento.
+   De paso mejora el LCP: un elemento con opacidad 1 cuenta como pintado al
+   instante. Es el mismo problema que ya nos dio requestAnimationFrame en
+   consent.js. */
+.reveal-ya { animation: aparecer .7s ease both; }
+@keyframes aparecer {
+  from { transform: translateY(24px); }
+  to   { transform: none; }
+}
 
 /* ── SECCIONES ── */
 .sec-bg { background: var(--c-bg); transition: background .35s ease; }
@@ -365,6 +392,7 @@ select option { background: var(--c-surface); color: var(--c-text); }
     transition-duration: .01ms !important;
   }
   .js .reveal { opacity: 1 !important; transform: none !important; }
+  .reveal-ya { opacity: 1 !important; transform: none !important; animation: none !important; }
 }
 
 /* ── MIGA DE PAN ── */

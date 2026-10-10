@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Desarrollo de productos digitales y assessment tecnológico — Oopart</title>
+  <title>Productos digitales y assessment tecnológico — Oopart</title>
   <meta name="description" content="Construimos plataformas web y apps móviles, y evaluamos la madurez tecnológica de tu empresa para entregarte una hoja de ruta accionable. Chile." />
   <link rel="canonical" href="https://oopart.cl/servicios/productos-y-estrategia/" />
   <meta name="theme-color" content="#30428A" />
@@ -36,16 +36,18 @@
     })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Fuentes auto-hospedadas (ver scripts/fuentes.mjs). Los @font-face viven
+       dentro de styles.css; el preload le avisa al navegador que las pida ya,
+       sin esperar a terminar de parsear la hoja de estilos. -->
+  <link rel="preload" href="/assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin />
 
   <script>window.OOPART_GA_ID = 'G-1FGGRMWGPE';</script>
   <script>window.OOPART_CLARITY_ID = 'yvkufc95j3';</script>
-  <script src="/consent.js"></script>
-  <script src="/analytics.js" defer></script>
+  <script src="/consent.js?v=5abf187b" defer></script>
+  <script src="/analytics.js?v=49d75a62" defer></script>
 
-  <link rel="stylesheet" href="/styles.css?v=8f749b60" />
+  <link rel="stylesheet" href="/styles.css?v=5ac6d2cb" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -118,8 +120,8 @@
 <nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="/" class="flex items-center shrink-0" aria-label="Oopart — inicio">
-      <img src="/assets/logo-lockup-white.png" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
-      <img src="/assets/logo-lockup-blue.png" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
+      <img src="/assets/logo-lockup-white.webp" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
+      <img src="/assets/logo-lockup-blue.webp" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
     </a>
     <div class="hidden md:flex items-center gap-8">
       <a href="/#servicios" class="nav-link text-sm font-body">Servicios</a>
@@ -159,15 +161,15 @@
 <section class="hero-grid relative flex items-center pt-16 overflow-hidden" style="min-height:auto">
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 w-full">
-    <nav class="breadcrumb reveal" aria-label="Ruta de navegación">
+    <nav class="breadcrumb reveal-ya" aria-label="Ruta de navegación">
       <a href="/">Inicio</a> <span aria-hidden="true">/</span>
       <a href="/#servicios">Servicios</a> <span aria-hidden="true">/</span>
       <span>Productos &amp; Estrategia</span>
     </nav>
     <div class="max-w-3xl mt-6">
-      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal">Productos &amp; Estrategia</h1>
-      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal t-muted2" style="transition-delay:.15s">Construir el producto correcto importa más que construirlo rápido. Y a veces el entregable más valioso es saber qué no hay que construir todavía.</p>
-      <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay:.25s">
+      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal-ya">Productos &amp; Estrategia</h1>
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.15s">Construir el producto correcto importa más que construirlo rápido. Y a veces el entregable más valioso es saber qué no hay que construir todavía.</p>
+      <div class="flex flex-col sm:flex-row gap-4 reveal-ya" style="animation-delay:.25s">
         <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">Conversemos sobre tu caso</a>
         <a href="/casos/buildtrack/" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded">Ver un caso real</a>
       </div>
@@ -275,8 +277,8 @@
     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="text-center md:text-left">
         <a href="/" aria-label="Oopart — inicio">
-          <img src="/assets/logo-full-white.png" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" />
-          <img src="/assets/logo-full-blue.png" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" />
+          <img src="/assets/logo-full-white.webp" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" loading="lazy" decoding="async" />
+          <img src="/assets/logo-full-blue.webp" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" loading="lazy" decoding="async" />
         </a>
         <p class="text-xs t-muted font-body mt-3">Out of Place Artefact — Tecnología que transforma.</p>
       </div>
@@ -293,7 +295,7 @@
   </div>
 </footer>
 
-<script src="/app.js"></script>
+<script src="/app.js?v=ab4155f3"></script>
 
 </body>
 </html>

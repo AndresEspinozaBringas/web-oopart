@@ -45,13 +45,15 @@ export function cabecera({ titulo, descripcion, url, ogTitulo, ogDesc, jsonLd = 
     })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Fuentes auto-hospedadas (ver scripts/fuentes.mjs). Los @font-face viven
+       dentro de styles.css; el preload le avisa al navegador que las pida ya,
+       sin esperar a terminar de parsear la hoja de estilos. -->
+  <link rel="preload" href="/assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin />
 
   <script>window.OOPART_GA_ID = '${GA}';</script>
   <script>window.OOPART_CLARITY_ID = '${CLARITY}';</script>
-  <script src="/consent.js"></script>
+  <script src="/consent.js" defer></script>
   <script src="/analytics.js" defer></script>
 
   <link rel="stylesheet" href="/styles.css" />
@@ -72,8 +74,8 @@ export const nav = `
 <nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="/" class="flex items-center shrink-0" aria-label="Oopart — inicio">
-      <img src="/assets/logo-lockup-white.png" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
-      <img src="/assets/logo-lockup-blue.png" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
+      <img src="/assets/logo-lockup-white.webp" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
+      <img src="/assets/logo-lockup-blue.webp" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
     </a>
     <div class="hidden md:flex items-center gap-8">
       <a href="/#servicios" class="nav-link text-sm font-body">Servicios</a>
@@ -107,8 +109,8 @@ export const pie = `
     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="text-center md:text-left">
         <a href="/" aria-label="Oopart — inicio">
-          <img src="/assets/logo-full-white.png" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" />
-          <img src="/assets/logo-full-blue.png" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" />
+          <img src="/assets/logo-full-white.webp" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" loading="lazy" decoding="async" />
+          <img src="/assets/logo-full-blue.webp" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" loading="lazy" decoding="async" />
         </a>
         <p class="text-xs t-muted font-body mt-3">Out of Place Artefact — Tecnología que transforma.</p>
       </div>

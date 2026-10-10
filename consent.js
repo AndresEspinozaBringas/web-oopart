@@ -54,8 +54,21 @@
     })(window, document, 'clarity', 'script', id);
   }
 
+  // analytics.js consulta esto al arrancar: corre despues que nosotros (ambos
+  // con defer, en orden), asi que una decision ya guardada no alcanza a
+  // notificarse por evento y tiene que poder preguntarse.
+  window.oopartAnaliticaPermitida = function () {
+    var g = leer();
+    return !!(g && g.acepta);
+  };
+
   function aplicar(acepta) {
     if (acepta) cargarClarity();
+    // Avisamos para que analytics.js baje gtag.js (196 KB) solo ahora. Antes lo
+    // cargaba siempre y quien rechazaba pagaba ese peso igual.
+    document.dispatchEvent(new CustomEvent('oopart:consentimiento', {
+      detail: { analitica: acepta }
+    }));
     gtag('consent', 'update', {
       analytics_storage: acepta ? 'granted' : 'denied',
       ad_storage: 'denied',
@@ -85,7 +98,7 @@
           '<p id="consent-texto" class="consent-text">Usamos Google Analytics para saber qué contenido resulta útil. ' +
           'No usamos cookies de publicidad ni compartimos tus datos con terceros con fines comerciales. ' +
           'Puedes rechazarlas y el sitio funciona igual. ' +
-          '<a href="/privacidad/">Más información</a>.</p>' +
+          'Lee <a href="/privacidad/">cómo tratamos tus datos</a>.</p>' +
         '</div>' +
         '<div class="consent-actions">' +
           '<button type="button" class="consent-btn consent-btn-no" data-consent="no">Rechazar</button>' +

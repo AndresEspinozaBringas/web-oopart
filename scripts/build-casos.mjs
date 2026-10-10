@@ -9,8 +9,8 @@ const nav = (activo = '') => `
 <nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="/" class="flex items-center shrink-0" aria-label="Oopart — inicio">
-      <img src="/assets/logo-lockup-white.png" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
-      <img src="/assets/logo-lockup-blue.png" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
+      <img src="/assets/logo-lockup-white.webp" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
+      <img src="/assets/logo-lockup-blue.webp" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
     </a>
     <div class="hidden md:flex items-center gap-8">
       <a href="/#servicios" class="nav-link text-sm font-body">Servicios</a>
@@ -52,8 +52,8 @@ const pie = `
     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="text-center md:text-left">
         <a href="/" aria-label="Oopart — inicio">
-          <img src="/assets/logo-full-white.png" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" />
-          <img src="/assets/logo-full-blue.png" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" />
+          <img src="/assets/logo-full-white.webp" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" loading="lazy" decoding="async" />
+          <img src="/assets/logo-full-blue.webp" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" loading="lazy" decoding="async" />
         </a>
         <p class="text-xs t-muted font-body mt-3">Out of Place Artefact — Tecnología que transforma.</p>
       </div>
@@ -111,14 +111,16 @@ for (const c of casos) {
     })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Fuentes auto-hospedadas (ver scripts/fuentes.mjs). Los @font-face viven
+       dentro de styles.css; el preload le avisa al navegador que las pida ya,
+       sin esperar a terminar de parsear la hoja de estilos. -->
+  <link rel="preload" href="/assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Google Analytics 4: pon aqui el identificador de medicion (G-XXXXXXXXXX) para activarlo -->
   <script>window.OOPART_GA_ID = 'G-1FGGRMWGPE';</script>
   <script>window.OOPART_CLARITY_ID = 'yvkufc95j3';</script>
-  <script src="/consent.js"></script>
+  <script src="/consent.js" defer></script>
   <script src="/analytics.js" defer></script>
 
   <link rel="stylesheet" href="/styles.css" />
@@ -156,21 +158,21 @@ ${nav()}
 <section class="hero-grid relative flex items-center pt-16 overflow-hidden" style="min-height:auto">
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 w-full">
-    <nav class="breadcrumb reveal" aria-label="Ruta de navegación">
+    <nav class="breadcrumb reveal-ya" aria-label="Ruta de navegación">
       <a href="/">Inicio</a> <span aria-hidden="true">/</span>
       <a href="/#resultados">Casos de éxito</a> <span aria-hidden="true">/</span>
       <span>${esc(c.cliente)}</span>
     </nav>
 
     <div class="max-w-3xl mt-6">
-      <span class="tag reveal">${esc(c.industria)}</span>
-      <p class="text-sm t-muted font-body mb-3 mt-2 reveal">${c.clienteUrl ? `<a href="${c.clienteUrl}" target="_blank" rel="noopener" class="link-accent">${esc(c.cliente)} ↗</a>` : esc(c.cliente)}</p>
+      <span class="tag reveal-ya">${esc(c.industria)}</span>
+      <p class="text-sm t-muted font-body mb-3 mt-2 reveal-ya">${c.clienteUrl ? `<a href="${c.clienteUrl}" target="_blank" rel="noopener" class="link-accent">${esc(c.cliente)} ↗</a>` : esc(c.cliente)}</p>
 
-      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal" style="transition-delay:.1s">${esc(c.titulo)}</h1>
+      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal-ya" style="animation-delay:.1s">${esc(c.titulo)}</h1>
 
-      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal t-muted2" style="transition-delay:.2s">${esc(c.resumen)}</p>
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.2s">${esc(c.resumen)}</p>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl reveal" style="transition-delay:.3s">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl reveal-ya" style="animation-delay:.3s">
         ${c.metricas.map((m) => `<div class="metric"><p class="metric-v">${esc(m.v)}</p><p class="metric-l">${esc(m.l)}</p></div>`).join('\n        ')}
       </div>
     </div>

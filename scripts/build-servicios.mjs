@@ -52,15 +52,15 @@ ${nav}
 <section class="hero-grid relative flex items-center pt-16 overflow-hidden" style="min-height:auto">
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 w-full">
-    <nav class="breadcrumb reveal" aria-label="Ruta de navegación">
+    <nav class="breadcrumb reveal-ya" aria-label="Ruta de navegación">
       <a href="/">Inicio</a> <span aria-hidden="true">/</span>
       <a href="/#servicios">Servicios</a> <span aria-hidden="true">/</span>
       <span>${esc(s.nombre)}</span>
     </nav>
     <div class="max-w-3xl mt-6">
-      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal">${esc(s.nombre)}</h1>
-      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal t-muted2" style="transition-delay:.15s">${esc(s.resumen)}</p>
-      <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay:.25s">
+      <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal-ya">${esc(s.nombre)}</h1>
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.15s">${esc(s.resumen)}</p>
+      <div class="flex flex-col sm:flex-row gap-4 reveal-ya" style="animation-delay:.25s">
         <a href="/#contacto" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded">Conversemos sobre tu caso</a>
         <a href="/casos/${esc(caso.slug)}/" class="btn-outline inline-flex items-center justify-center gap-2 px-6 py-3 font-body text-sm rounded">Ver un caso real</a>
       </div>

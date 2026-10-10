@@ -2,8 +2,8 @@
   {
     "slug": "inteligencia-artificial",
     "nombre": "Inteligencia Artificial",
-    "titleSeo": "Inteligencia Artificial aplicada a procesos de negocio — Oopart",
-    "descripcion": "Diseñamos e implementamos soluciones de IA que automatizan trabajo real: extracción de datos, clasificación de documentos y decisiones repetitivas. Consultoría en Chile.",
+    "titleSeo": "Inteligencia Artificial para procesos de negocio — Oopart",
+    "descripcion": "Implementamos IA que automatiza trabajo real: extracción de datos, clasificación de documentos y decisiones repetitivas. Consultoría en Chile.",
     "resumen": "IA que se mide en horas liberadas y errores que dejan de ocurrir, no en demos que impresionan y nadie usa.",
     "intro": [
       "La mayoría de los proyectos de IA que fracasan no fracasan por la tecnología. Fracasan porque empezaron por la herramienta en vez de por el problema: alguien decidió «hay que hacer algo con IA» y después salió a buscar dónde aplicarla.",
@@ -25,13 +25,19 @@
       "titular": "En Humphreys, automatizar la extracción, limpieza y consolidación de datos bajó un proceso de 30 días a 5, con 90% menos errores.",
       "texto": "Ver el caso completo"
     },
-    "tecnologias": ["Python", "Azure", "Google Cloud", "n8n", "Power Automate"]
+    "tecnologias": [
+      "Python",
+      "Azure",
+      "Google Cloud",
+      "n8n",
+      "Power Automate"
+    ]
   },
   {
     "slug": "tecnologia-y-sistemas",
     "nombre": "Tecnología & Sistemas",
-    "titleSeo": "Integración de sistemas y gestión de infraestructura — Oopart",
-    "descripcion": "Conectamos ERP, sistemas de bodega, plataformas de venta y servicios en la nube para que operen como uno solo. Integración de sistemas y gestión de infraestructura en Chile.",
+    "titleSeo": "Integración de sistemas e infraestructura TI — Oopart",
+    "descripcion": "Conectamos ERP, bodega, plataformas de venta y nube para que operen como uno solo. Integración de sistemas e infraestructura en Chile.",
     "resumen": "Cuando cada sistema funciona bien por separado pero el traspaso entre ellos es manual, el problema no está en los sistemas: está entre ellos.",
     "intro": [
       "Casi ninguna empresa tiene un problema de software. Tiene un problema de costuras: el ERP no habla con la bodega, la venta se registra en un lado y la facturación en otro, y alguien dedica media jornada a copiar datos de una pantalla a otra.",
@@ -53,12 +59,19 @@
       "titular": "En Isapre Fundación, integrar el front office con el back office eliminó el traspaso manual de expedientes: 85% menos errores documentales y el cierre de venta pasó de 3 días a 30 minutos.",
       "texto": "Ver el caso completo"
     },
-    "tecnologias": ["Azure", "Google Cloud", "Node.js", "Python", "SharePoint", "n8n"]
+    "tecnologias": [
+      "Azure",
+      "Google Cloud",
+      "Node.js",
+      "Python",
+      "SharePoint",
+      "n8n"
+    ]
   },
   {
     "slug": "productos-y-estrategia",
     "nombre": "Productos & Estrategia",
-    "titleSeo": "Desarrollo de productos digitales y assessment tecnológico — Oopart",
+    "titleSeo": "Productos digitales y assessment tecnológico — Oopart",
     "descripcion": "Construimos plataformas web y apps móviles, y evaluamos la madurez tecnológica de tu empresa para entregarte una hoja de ruta accionable. Chile.",
     "resumen": "Construir el producto correcto importa más que construirlo rápido. Y a veces el entregable más valioso es saber qué no hay que construir todavía.",
     "intro": [
@@ -81,6 +94,12 @@
       "titular": "Para Grupo S3L construimos BuildTrack, una plataforma de gestión de obras diseñada sobre la normativa chilena. Hoy opera con más de 30 obras activas.",
       "texto": "Ver el caso completo"
     },
-    "tecnologias": ["React", "Node.js", "Azure", "Google Cloud", "Python"]
+    "tecnologias": [
+      "React",
+      "Node.js",
+      "Azure",
+      "Google Cloud",
+      "Python"
+    ]
   }
 ]

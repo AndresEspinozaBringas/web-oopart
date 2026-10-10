@@ -1,0 +1,33 @@
+# Cabeceras de Cloudflare Workers Static Assets.
+#
+# Por defecto todo se servia con max-age=0, must-revalidate: el navegador
+# volvia a preguntar por cada archivo en cada visita aunque nada hubiera
+# cambiado. Aca distinguimos lo que puede cachearse de lo que no.
+
+# CSS y JS llevan ?v=<hash> del contenido (scripts/version-assets.mjs): si
+# cambian, cambia la URL. Por eso la copia guardada nunca queda obsoleta y
+# podemos decirle al navegador que no vuelva a preguntar nunca.
+/styles.css
+  Cache-Control: public, max-age=31536000, immutable
+/app.js
+  Cache-Control: public, max-age=31536000, immutable
+/consent.js
+  Cache-Control: public, max-age=31536000, immutable
+/analytics.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fuentes: el archivo que corresponde a cada familia no cambia; si cambiara,
+# scripts/fuentes.mjs escribiria otro nombre.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Logos, iconos e imagenes para redes: no llevan hash, asi que reemplazar uno
+# sin renombrarlo dejaria a los visitantes con la version vieja. Un mes evita
+# revalidar en cada visita sin atarnos un ano.
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+# El HTML se revalida siempre: es lo que cambia cuando publicamos y lo que
+# apunta a las versiones nuevas de todo lo anterior.
+/*
+  Cache-Control: public, max-age=0, must-revalidate

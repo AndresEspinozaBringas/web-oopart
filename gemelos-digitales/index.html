@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Gemelos digitales para operaciones logísticas e industriales — Oopart</title>
-  <meta name="description" content="Construimos gemelos digitales: réplicas en 3D de tu operación alimentadas con datos reales de RFID, ERP y sensores. Detecta cuellos de botella y compara escenarios antes de invertir. Demo interactiva disponible." />
+  <title>Gemelos digitales para logística e industria — Oopart</title>
+  <meta name="description" content="Réplicas en 3D de tu operación alimentadas con datos reales de RFID, ERP y sensores. Detecta cuellos de botella antes de invertir. Demo disponible." />
   <link rel="canonical" href="https://oopart.cl/gemelos-digitales/" />
   <meta name="theme-color" content="#30428A" />
 
@@ -36,16 +36,18 @@
     })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Fuentes auto-hospedadas (ver scripts/fuentes.mjs). Los @font-face viven
+       dentro de styles.css; el preload le avisa al navegador que las pida ya,
+       sin esperar a terminar de parsear la hoja de estilos. -->
+  <link rel="preload" href="/assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin />
   <!-- Google Analytics 4: pon aqui el identificador de medicion (G-XXXXXXXXXX) para activarlo -->
   <script>window.OOPART_GA_ID = 'G-1FGGRMWGPE';</script>
   <script>window.OOPART_CLARITY_ID = 'yvkufc95j3';</script>
-  <script src="/consent.js"></script>
-  <script src="/analytics.js" defer></script>
+  <script src="/consent.js?v=5abf187b" defer></script>
+  <script src="/analytics.js?v=49d75a62" defer></script>
 
-  <link rel="stylesheet" href="/styles.css?v=8f749b60" />
+  <link rel="stylesheet" href="/styles.css?v=5ac6d2cb" />
 
   <script type="application/ld+json">
   {
@@ -67,8 +69,8 @@
 <nav class="nav-wrap fixed top-0 left-0 right-0 z-50">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="/" class="flex items-center shrink-0" aria-label="Oopart — inicio">
-      <img src="/assets/logo-lockup-white.png" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
-      <img src="/assets/logo-lockup-blue.png" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
+      <img src="/assets/logo-lockup-white.webp" alt="Oopart" width="400" height="161" class="logo-img logo-on-dark" />
+      <img src="/assets/logo-lockup-blue.webp" alt="" aria-hidden="true" width="400" height="161" class="logo-img logo-on-light" />
     </a>
 
     <div class="hidden md:flex items-center gap-8">
@@ -114,28 +116,28 @@
 <section class="hero-grid relative flex items-center pt-16 overflow-hidden" style="min-height:auto">
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-6 py-20 md:py-24 w-full">
-    <nav class="breadcrumb reveal" aria-label="Ruta de navegación">
+    <nav class="breadcrumb reveal-ya" aria-label="Ruta de navegación">
       <a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>Gemelos digitales</span>
     </nav>
 
     <div class="max-w-3xl">
-      <div class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 mt-6 reveal">
+      <div class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 mt-6 reveal-ya">
         <span class="dot-pulse" aria-hidden="true"></span>
         <span class="text-xs font-body tracking-wider t-accent">Demo interactiva disponible</span>
       </div>
 
-      <h1 class="font-display font-semibold text-4xl md:text-5xl mb-6 t-text reveal" style="transition-delay:.1s">
+      <h1 class="font-display font-semibold text-4xl md:text-5xl mb-6 t-text reveal-ya" style="animation-delay:.1s">
         <span class="line">Gemelos digitales</span>
         <span class="line gradient-text">de tu operación real</span>
       </h1>
 
-      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal t-muted2" style="transition-delay:.2s">
+      <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.2s">
         Una réplica en 3D de tu planta, bodega o centro de distribución, alimentada con los
         datos que ya genera tu operación. Sirve para ver lo que hoy no se ve, probar decisiones
         antes de ejecutarlas y discutir con el equipo sobre un modelo, no sobre una planilla.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay:.3s">
+      <div class="flex flex-col sm:flex-row gap-4 reveal-ya" style="animation-delay:.3s">
         <a href="https://gemelo.oopart.cl/" class="btn-accent inline-flex items-center justify-center gap-2 px-6 py-3 font-body font-medium text-sm rounded" target="_blank" rel="noopener">
           Abrir la demo en vivo →
         </a>
@@ -344,8 +346,8 @@
     <div class="flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="text-center md:text-left">
         <a href="/" aria-label="Oopart — inicio">
-          <img src="/assets/logo-full-white.png" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" />
-          <img src="/assets/logo-full-blue.png" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" />
+          <img src="/assets/logo-full-white.webp" alt="Oopart — Tecnología + Desarrollo" width="480" height="193" class="logo-img logo-foot logo-on-dark" loading="lazy" decoding="async" />
+          <img src="/assets/logo-full-blue.webp" alt="" aria-hidden="true" width="480" height="193" class="logo-img logo-foot logo-on-light" loading="lazy" decoding="async" />
         </a>
         <p class="text-xs t-muted font-body mt-3">Out of Place Artefact — Tecnología que transforma.</p>
       </div>
@@ -362,7 +364,7 @@
   </div>
 </footer>
 
-<script src="/app.js"></script>
+<script src="/app.js?v=ab4155f3"></script>
 
 </body>
 </html>
