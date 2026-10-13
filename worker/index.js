@@ -25,9 +25,31 @@ const DESAFIOS = {
   otro: 'Otro',
 };
 
+// El sitio respondia 200 en cuatro direcciones a la vez: con y sin www, con y
+// sin cifrar. Para Google eso es contenido duplicado, pero lo grave es lo otro:
+// quien llegara por http:// enviaba el formulario de contacto sin cifrar.
+// Un 301 deja una sola direccion valida y le dice a Google cual es.
+const CANONICO = 'oopart.cl';
+
+function redireccionCanonica(url) {
+  const esWww = url.hostname === 'www.' + CANONICO;
+  const sinCifrar = url.protocol === 'http:';
+  if (!esWww && !sinCifrar) return null;
+
+  const destino = new URL(url);
+  destino.protocol = 'https:';
+  destino.hostname = CANONICO;
+  // 301 y no 302: el cambio es permanente y queremos que Google traspase
+  // a la direccion canonica lo que ya haya acumulado en las otras.
+  return Response.redirect(destino.toString(), 301);
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+
+    const redir = redireccionCanonica(url);
+    if (redir) return redir;
 
     if (url.pathname === '/api/contacto') {
       if (request.method === 'OPTIONS') return preflight(request);
@@ -43,7 +65,10 @@ export default {
 
 function origenPermitido(request) {
   const o = request.headers.get('Origin');
-  return !o || ORIGENES.includes(o);
+  // Exigimos la cabecera: los navegadores la envian en todo POST, incluso con
+  // JavaScript desactivado. Los bots que publican con curl no la mandan, y
+  // aceptar su ausencia dejaba pasar el spam por encima del honeypot.
+  return !!o && ORIGENES.includes(o);
 }
 
 function cors(request) {
