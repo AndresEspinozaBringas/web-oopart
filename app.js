@@ -65,6 +65,38 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
+  // ── INTENCIONES DE CONTACTO ──
+  // GA4 no ve estos clics por su cuenta. Su medicion mejorada registra enlaces
+  // salientes, pero tel: y mailto: no son navegacion: abren el telefono o el
+  // cliente de correo sin que la pagina se descargue. Sin esto, alguien que
+  // entra y te llama figura en los informes como una visita que no hizo nada.
+  //
+  // La demo si la veria GA4 como enlace saliente, pero le damos nombre propio
+  // porque es la conversion blanda que mas interesa y conviene poder marcarla
+  // como evento clave sin arrastrar todos los enlaces externos.
+  var INTENCIONES = [
+    { prueba: function (h) { return h.indexOf('tel:') === 0; },     evento: 'contacto_telefono' },
+    { prueba: function (h) { return h.indexOf('mailto:') === 0; },  evento: 'contacto_email' },
+    { prueba: function (h) { return h.indexOf('gemelo.oopart.cl') > -1; }, evento: 'abre_demo' },
+  ];
+
+  document.addEventListener('click', function (e) {
+    // Sin consentimiento gtag existe pero no transmite: el evento se encola y
+    // se descarta. Es el comportamiento que queremos, no hay que filtrarlo aca.
+    if (typeof window.gtag !== 'function') return;
+
+    var enlace = e.target.closest && e.target.closest('a[href]');
+    if (!enlace) return;
+
+    var href = enlace.getAttribute('href') || '';
+    for (var i = 0; i < INTENCIONES.length; i++) {
+      if (INTENCIONES[i].prueba(href)) {
+        window.gtag('event', INTENCIONES[i].evento, { pagina: location.pathname });
+        return;
+      }
+    }
+  });
+
   // ── FORMULARIO ──
   // Motivos que devuelve nuestro endpoint /api/contacto
   var MOTIVOS = {
