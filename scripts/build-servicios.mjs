@@ -38,7 +38,7 @@ for (const s of servicios) {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://oopart.cl/' },
-          { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://oopart.cl/#servicios' },
+          { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://oopart.cl/servicios/' },
           { '@type': 'ListItem', position: 3, name: s.nombre, item: url },
         ],
       },
@@ -54,7 +54,7 @@ ${nav}
   <div class="max-w-6xl mx-auto px-6 py-16 md:py-20 w-full">
     <nav class="breadcrumb reveal-ya" aria-label="Ruta de navegación">
       <a href="/">Inicio</a> <span aria-hidden="true">/</span>
-      <a href="/#servicios">Servicios</a> <span aria-hidden="true">/</span>
+      <a href="/servicios/">Servicios</a> <span aria-hidden="true">/</span>
       <span>${esc(s.nombre)}</span>
     </nav>
     <div class="max-w-3xl mt-6">
