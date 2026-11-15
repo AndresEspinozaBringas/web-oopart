@@ -507,4 +507,6 @@ select option { background: var(--c-surface); color: var(--c-text); }
 
 /* ── CIFRAS CLICABLES ── */
 .stat-link { display: block; border-radius: .5rem; padding: .5rem; transition: background .2s, transform .2s; }
-.stat-link:hover { background: var(--c-brand-bg); transform: translateY(-2px); }
+/* Solo el que sigue siendo enlace reacciona al raton: las otras tres cifras
+   pasaron a texto y un hover ahi prometeria un clic que no existe. */
+a.stat-link:hover { background: var(--c-brand-bg); transform: translateY(-2px); }

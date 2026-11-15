@@ -1,6 +1,15 @@
 // Genera las paginas de caso de exito desde scripts/casos.json.
 // Las paginas resultantes se commitean: Cloudflare no ejecuta build.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { LINKEDIN } from './comun.mjs';
+
+// Fecha en texto para el lector; el atributo datetime lleva la version ISO.
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+               'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+function fechaLarga(iso) {
+  const [a, m, dia] = iso.split('-');
+  return `${Number(dia)} de ${MESES[Number(m) - 1]} de ${a}`;
+}
 
 const casos = JSON.parse(readFileSync('scripts/casos.json', 'utf8'));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -68,6 +77,7 @@ const pie = `
         <a href="/#resultados" class="nav-link text-xs font-body">Resultados</a>
         <a href="/#contacto" class="nav-link text-xs font-body">Contacto</a>
         <a href="/privacidad/" class="nav-link text-xs font-body">Privacidad</a>
+        <a href="${LINKEDIN}" class="nav-link text-xs font-body" target="_blank" rel="noopener">LinkedIn ↗</a>
       </nav>
       <p class="text-xs t-muted font-body">© <span id="year">2026</span> Oopart. Todos los derechos reservados.</p>
     </div>
@@ -138,6 +148,8 @@ for (const c of casos) {
     "description": ${JSON.stringify(c.descripcion)},
     "about": ${JSON.stringify(c.industria)},
     "image": "https://oopart.cl/assets/og-image.png",
+    "datePublished": "${c.fecha}",
+    "dateModified": "${c.fecha}",
     "author": { "@type": "Organization", "name": "Oopart", "url": "https://oopart.cl/" },
     "publisher": { "@type": "Organization", "name": "Oopart", "logo": { "@type": "ImageObject", "url": "https://oopart.cl/assets/icon-512.png" } },
     "mainEntityOfPage": ${JSON.stringify(url)}
@@ -175,6 +187,10 @@ ${nav()}
       <p class="text-sm t-muted font-body mb-3 mt-2 reveal-ya">${c.clienteUrl ? `<a href="${c.clienteUrl}" target="_blank" rel="noopener" class="link-accent">${esc(c.cliente)} ↗</a>` : esc(c.cliente)}</p>
 
       <h1 class="font-display font-semibold text-3xl md:text-5xl mb-6 t-text reveal-ya" style="animation-delay:.05s">${esc(c.titulo)}</h1>
+
+      <p class="text-xs t-muted font-body mb-6 reveal-ya">
+        Publicado el <time datetime="${c.fecha}">${fechaLarga(c.fecha)}</time>
+      </p>
 
       <p class="text-lg font-body font-light leading-relaxed mb-8 max-w-2xl reveal-ya t-muted2" style="animation-delay:.1s">${esc(c.resumen)}</p>
 

@@ -41,7 +41,8 @@
         "l": "Aumento de ventas"
       }
     ],
-    "cierre": "Pasar de 30 a 5 días no solo ahorra horas: cambia qué puede ofrecer el negocio. Con el ciclo más corto, el equipo atiende más casos con la misma dotación."
+    "cierre": "Pasar de 30 a 5 días no solo ahorra horas: cambia qué puede ofrecer el negocio. Con el ciclo más corto, el equipo atiende más casos con la misma dotación.",
+    "fecha": "2026-10-09"
   },
   {
     "slug": "accuhealth",
@@ -89,7 +90,8 @@
     "industriaPagina": {
       "url": "/salud/",
       "nombre": "salud privada"
-    }
+    },
+    "fecha": "2026-10-09"
   },
   {
     "slug": "isapre-fundacion",
@@ -137,7 +139,8 @@
     "industriaPagina": {
       "url": "/salud/",
       "nombre": "salud privada"
-    }
+    },
+    "fecha": "2026-10-09"
   },
   {
     "slug": "buildtrack",
@@ -187,6 +190,7 @@
       "url": "https://buildtrack.cl/",
       "texto": "Ver buildtrack.cl"
     },
-    "clienteUrl": "http://www.studio3l.cl/"
+    "clienteUrl": "http://www.studio3l.cl/",
+    "fecha": "2026-10-09"
   }
 ]
